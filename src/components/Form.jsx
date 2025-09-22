@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -10,8 +11,9 @@ export function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Bienvenue ${inputAss}`);
+    // alert(`Bienvenue ${inputAss}`);
     setInputValue("");
+    navigate(`order/${inputAss}`);
   };
 
   return (
@@ -25,7 +27,6 @@ export function Form() {
         required
       />
       <button>Accéder à votre espace</button>
-      <Link to="/order">Vers OrderPage</Link>
     </form>
   );
 }
