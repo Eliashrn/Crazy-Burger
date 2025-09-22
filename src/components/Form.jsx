@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
@@ -24,6 +25,7 @@ export function Form() {
         required
       />
       <button>Accéder à votre espace</button>
+      <Link to="/order">Vers OrderPage</Link>
     </form>
   );
 }

@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const OrderPage = () => {
   return (
     <>
       <h1>Bonjour</h1>
 
-      <button>Déconnexion</button>
+      <Link to="/">
+        <button>Déconnexion</button>
+      </Link>
     </>
   );
 };
