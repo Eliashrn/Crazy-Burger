@@ -1,18 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import LoginPage from './components/Pages/LoginPage'
-
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import LoginPage from "./components/Pages/LoginPage";
+import OrderPage from "./components/Pages/OrderPage";
+import ErrorPage from "./components/Pages/ErrorPage";
 
 function App() {
-
-
   return (
-    <>
-      <LoginPage/>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/order" element={<OrderPage />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
