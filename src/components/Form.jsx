@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { BsPersonCircle } from "react-icons/bs";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
@@ -19,14 +20,16 @@ export function Form() {
       <h1>Bienvenue chez nous !</h1>
       <hr />
       <h2>Connectez vous</h2>
-      <label htmlFor="name">Name:</label>
-      <input
-        type="text"
-        value={inputAss}
-        onChange={handleChange}
-        placeholder="Entrez votre prénom..."
-        required
-      />
+      <div className="input-container">
+        <BsPersonCircle className="icon" />
+        <input
+          type="text"
+          value={inputAss}
+          onChange={handleChange}
+          placeholder="Entrez votre prénom..."
+          required
+        />
+      </div>
       <button>Accéder à votre espace</button>
     </StyledForm>
   );
@@ -56,4 +59,25 @@ const StyledForm = styled.form`
     margin: 20px 10px 10 px;
     color: white;
     font-size: 36px;
+  }
+
+  .input-container {
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    margin: 18px 0;
+
+    .icon {
+      font-size: 15px;
+      margin-right: 8px;
+    }
+
+    input {
+      border: none;
+      font-size: 15px;
+      color: #17161a;
+    }
+  }
 `;
