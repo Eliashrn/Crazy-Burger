@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
+import { IoChevronForwardSharp } from "react-icons/io5";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
@@ -30,7 +31,10 @@ export function Form() {
           required
         />
       </div>
-      <button>Accéder à votre espace</button>
+      <button className="button-container">
+        <span>Accéder à votre espace</span>
+        <IoChevronForwardSharp className="icon" />
+      </button>
     </StyledForm>
   );
 }
@@ -78,6 +82,32 @@ const StyledForm = styled.form`
       border: none;
       font-size: 15px;
       color: #17161a;
+      width: 100%;
     }
+  }
+
+  .button-container {
+    background: #f56a2c;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #f56a2c;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 1;
+    padding: 18px 24px;
+    cursor: pointer;
+    font-size: 15px;
+
+
+    span {      color: white;
+      font-weight: bold;
+      margin-right: 8px;
+    }   
+    .icon {
+      font-size: 20px;  
   }
 `;
