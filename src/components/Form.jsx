@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForwardSharp } from "react-icons/io5";
-import Input from "./Pages/Input";
+import Input from "./Reusable-ui/Input";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
