@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForwardSharp } from "react-icons/io5";
+import Input from "./Pages/Input";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
@@ -12,7 +13,7 @@ export function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Bienvenue ${inputAss}`);
+
     setInputValue("");
   };
 
@@ -21,16 +22,13 @@ export function Form() {
       <h1>Bienvenue chez nous !</h1>
       <hr />
       <h2>Connectez vous</h2>
-      <div className="input-container">
-        <BsPersonCircle className="icon" />
-        <input
-          type="text"
-          value={inputAss}
-          onChange={handleChange}
-          placeholder="Entrez votre prénom..."
-          required
-        />
-      </div>
+      <Input
+        value={inputAss}
+        onChange={handleChange}
+        placeholder="Entrez votre prénom..."
+        Icon={<BsPersonCircle className="icon" />}
+        required
+      />
       <button className="button-container">
         <span>Accéder à votre espace</span>
         <IoChevronForwardSharp className="icon" />
@@ -65,26 +63,7 @@ const StyledForm = styled.form`
     font-size: 36px;
   }
 
-  .input-container {
-    background: #fff;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
 
-    .icon {
-      font-size: 15px;
-      margin-right: 8px;
-    }
-
-    input {
-      border: none;
-      font-size: 15px;
-      color: #17161a;
-      width: 100%;
-    }
-  }
 
   .button-container {
     background: #f56a2c;
