@@ -5,13 +5,11 @@ import { IoChevronForwardSharp } from "react-icons/io5";
 import Input from "./Reusable-ui/Input";
 import Button from "./Reusable-ui/Button";
 import { Link, useNavigate } from "react-router";
+import { theme } from "../theme";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
   const navigate = useNavigate();
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +24,7 @@ export function Form() {
       <h2>Connectez vous</h2>
       <Input
         value={inputAss}
-        onChange={handleChange}
+        onChange={(e) => setInputValue(e.target.value)}
         placeholder="Entrez votre prénom..."
         Icon={<BsPersonCircle className="icon" />}
       />
@@ -48,11 +46,11 @@ const StyledForm = styled.form`
   min-width: 400px;
   margin: 0 auto;
   padding: 2.5rem 2rem;
-  border-radius: 5px;
+  border-radius: ${theme.radius};
   font-family: "Amatic SC", cursive;
 
   hr {
-    border: 1.5px solid #f56a2c;
+    border: 1.5px solid ${theme.colors.primary};
     margin-bottom: 40px;
   }
 
