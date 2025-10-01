@@ -3,17 +3,18 @@ import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForwardSharp } from "react-icons/io5";
 import Input from "./Reusable-ui/Input";
+import { Link, useNavigate } from "react-router";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    navigate(`/order/${inputAss}`);
     setInputValue("");
   };
 
@@ -27,12 +28,14 @@ export function Form() {
         onChange={handleChange}
         placeholder="Entrez votre prénom..."
         Icon={<BsPersonCircle className="icon" />}
-        required
       />
-      <button className="button-container">
-        <span>Accéder à votre espace</span>
-        <IoChevronForwardSharp className="icon" />
-      </button>
+
+      <Link to={`/order/${inputAss}`}>
+        <button className="button-container">
+          <span>Accéder à votre espace</span>
+          <IoChevronForwardSharp className="icon" />
+        </button>
+      </Link>
     </StyledForm>
   );
 }
@@ -64,6 +67,8 @@ const StyledForm = styled.form`
   }
 
 
+
+  }
 
   .button-container {
     background: #f56a2c;
