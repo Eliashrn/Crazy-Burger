@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForwardSharp } from "react-icons/io5";
 import Input from "./Reusable-ui/Input";
+import Button from "./Reusable-ui/Button";
 import { Link, useNavigate } from "react-router";
 
 export function Form() {
@@ -31,10 +32,10 @@ export function Form() {
       />
 
       <Link to={`/order/${inputAss}`}>
-        <button className="button-container">
-          <span>Accéder à votre espace</span>
-          <IoChevronForwardSharp className="icon" />
-        </button>
+        <Button
+          Icon={<IoChevronForwardSharp className="icon-button" />}
+          label={"Accéder à votre espace"}
+        />
       </Link>
     </StyledForm>
   );
@@ -66,32 +67,10 @@ const StyledForm = styled.form`
     font-size: 36px;
   }
 
-
-
-  }
-
-  .button-container {
-    background: #f56a2c;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #f56a2c;
-    display: inline-flex;
+    .icon-button {
+    display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    white-space: nowrap;
-    text-decoration: none;
-    line-height: 1;
-    padding: 18px 24px;
-    cursor: pointer;
     font-size: 15px;
-
-
-    span {      color: white;
-      font-weight: bold;
-      margin-right: 8px;
-    }   
-    .icon {
-      font-size: 20px;  
-  }
+    color: white;
 `;
