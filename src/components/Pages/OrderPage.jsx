@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom";
-import Navbar from "../Reusable-ui/Navbar";
 import styled from "styled-components";
 
 const OrderPage = () => {
@@ -8,11 +7,15 @@ const OrderPage = () => {
   return (
     <OrderPageStyled>
       <div className="container">
-        <h1>Bonjour {inputAss}</h1>
-
-        <Link to="/">
-          <button>Déconnexion</button>
-        </Link>
+        <div className="navbar">
+          <h1>Bonjour {inputAss}</h1>
+          <Link to="/">
+            <button>Déconnexion</button>
+          </Link>
+        </div>
+        <div className="content">
+          <h2>Order Page Content Here</h2>
+        </div>
       </div>
     </OrderPageStyled>
   );
@@ -32,6 +35,16 @@ const OrderPageStyled = styled.div`
     background: red;
     height: 95vh;
     width: 1400px;
+  }
+
+  .navbar {
+    background: blue;
+    height: 10vh;
+  }
+
+  .content {
+    background: green;
+    height: 85vh;
   }
 `;
 
