@@ -9,7 +9,7 @@ const Navbar = () => {
     <StyledNavbar>
       <div className="left-side">
         <a href="/">
-          <Logo className="logo" />
+          <Logo />
         </a>
       </div>
       <div className="right-side">
@@ -25,21 +25,8 @@ const Navbar = () => {
 };
 
 const StyledNavbar = styled.nav`
-  display: grid;
-  grid-template-columns: 50% 50%;
-  align-items: center;
-  justify-content: space-between;
-
-  .left-side {
-    logo {
-      font-size: 2rem;
-    }
-  }
-
-  .right-side {
-    display: flex;
-    align-items: center;
-  }
+  background: blue;
+  height: 10vh;
 `;
 
 export default Navbar;
