@@ -7,18 +7,12 @@ const Navbar = () => {
   const { inputAss } = useParams();
   return (
     <StyledNavbar>
-      <div className="left-side">
-        <a href="/">
-          <Logo />
-        </a>
-      </div>
+      <div className="left-side">left</div>
       <div className="right-side">
         <h2>Hey {inputAss}</h2>
-
         <Link to="/">
           <button>Se déconnecter</button>
         </Link>
-        <BsPersonCircle />
       </div>
     </StyledNavbar>
   );
@@ -27,6 +21,16 @@ const Navbar = () => {
 const StyledNavbar = styled.nav`
   background: blue;
   height: 10vh;
+  display: flex;
+  justify-content: space-between;
+
+  .left-side {
+    background: pink;
+  }
+
+  .right-side {
+    background: purple;
+  }
 `;
 
 export default Navbar;
