@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Logo() {
+export default function Logo({ className }) {
   return (
-    <LogoStyled>
+    <LogoStyled className={className}>
       <h2>Crazee</h2>
-      <img src="./image/F03 logo-orange.png" alt="Logo Crazy Burger" />
+      <img src="/image/F03 logo-orange.png" alt="Logo Crazy Burger" />
       <h2>Burger</h2>
     </LogoStyled>
   );
@@ -15,7 +15,6 @@ export default function Logo() {
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
-  transform: scale(2.5);
 
   h2 {
     display: inline;

@@ -65,10 +65,11 @@ const StyledForm = styled.form`
     font-size: 36px;
   }
 
-    .icon-button {
+  .icon-button {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 15px;
     color: white;
+  }
 `;

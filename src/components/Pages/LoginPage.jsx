@@ -1,4 +1,3 @@
-import React from "react";
 import { Form } from "../Form";
 import styled from "styled-components";
 import Logo from "../Reusable-ui/Logo";
@@ -6,7 +5,7 @@ import Logo from "../Reusable-ui/Logo";
 export default function LoginPage() {
   return (
     <LoginPageStyled>
-      <Logo />
+      <Logo className={"logo-login-page"} />
       <Form />
     </LoginPageStyled>
   );
@@ -31,5 +30,9 @@ const LoginPageStyled = styled.div`
     right: 0;
     bottom: 0;
     z-index: -1;
+  }
+
+  .logo-login-page {
+    transform: scale(2.5);
   }
 `;
