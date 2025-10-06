@@ -2,16 +2,17 @@ import { Link, useParams } from "react-router";
 import Logo from "../Reusable-ui/Logo";
 import styled from "styled-components";
 import Profile from "./Profile";
+import { theme } from "../../theme";
 
 const Navbar = () => {
   const { inputAss } = useParams();
   return (
-    <StyledNavbar username={inputAss}>
+    <StyledNavbar>
       <Logo />
 
       <div className="right-side">
         {/* <div className="admin-button">Admin button</div> */}
-        <Profile />
+        <Profile username={inputAss} />
         <div className="picture"></div>
       </div>
     </StyledNavbar>
@@ -19,11 +20,13 @@ const Navbar = () => {
 };
 
 const StyledNavbar = styled.nav`
-  background: blue;
+  background: ${theme.colors.white};
   height: 10vh;
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
+  border-top-left-radius: ${theme.borderRadius.extraRound};
+  border-top-right-radius: ${theme.borderRadius.extraRound};
 
   .right-side {
     display: flex;

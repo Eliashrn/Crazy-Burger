@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useParams } from "react-router";
 import Main from "../Reusable-ui/Main";
 import Navbar from "./Navbar";
+import { theme } from "../../theme";
 
 const OrderPage = () => {
   const { inputAss } = useParams();
@@ -26,7 +27,7 @@ const OrderPageStyled = styled.div`
   height: 100vh;
 
   .container {
-    background: red;
+    border-radius: ${theme.borderRadius.extraRound};
     height: 95vh;
     width: 1400px;
   }
