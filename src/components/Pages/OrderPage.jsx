@@ -20,7 +20,7 @@ const OrderPageStyled = styled.div`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: orange;
+  background: ${theme.colors.primary};
   display: flex;
   justify-content: center;
   align-items: center;
