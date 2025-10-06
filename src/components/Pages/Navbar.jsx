@@ -8,7 +8,10 @@ const Navbar = () => {
   const { inputAss } = useParams();
   return (
     <StyledNavbar>
-      <Logo />
+      <Logo
+        className="logo-order-page"
+        onClick={() => window.location.reload()}
+      />
 
       <div className="right-side">
         {/* <div className="admin-button">Admin button</div> */}
@@ -27,6 +30,10 @@ const StyledNavbar = styled.nav`
   padding: 0 20px;
   border-top-left-radius: ${theme.borderRadius.extraRound};
   border-top-right-radius: ${theme.borderRadius.extraRound};
+
+  .logo-order-page {
+    cursor: pointer;
+  }
 
   .right-side {
     display: flex;
