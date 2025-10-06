@@ -4,7 +4,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForwardSharp } from "react-icons/io5";
 import Input from "./Reusable-ui/Input";
 import Button from "./Reusable-ui/Button";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { theme } from "../theme";
 
 export function Form() {
@@ -18,58 +18,62 @@ export function Form() {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <h1>Bienvenue chez nous !</h1>
-      <hr />
-      <h2>Connectez vous</h2>
-      <Input
-        value={inputAss}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Entrez votre prénom..."
-        Icon={<BsPersonCircle className="icon" />}
-      />
+    <StyledForm action="submit" onSubmit={handleSubmit}>
+      <div>
+        <h1>Bienvenue chez nous !</h1>
+        <hr />
+        <h2>Connectez vous</h2>
+      </div>
+      <div>
+        <Input
+          value={inputAss}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder={"Entrez votre prénom..."}
+          Icon={<BsPersonCircle className="icon" />}
+        />
 
-      <Link to={`/order/${inputAss}`}>
         <Button
           Icon={<IoChevronForwardSharp className="icon-button" />}
           label={"Accéder à votre espace"}
         />
-      </Link>
+      </div>
     </StyledForm>
   );
 }
 
 const StyledForm = styled.form`
-  background: none;
   text-align: center;
   max-width: 500px;
   min-width: 400px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem;
-  border-radius: ${theme.radius};
-  font-family: "Amatic SC", cursive;
+  margin: 0px auto;
+  padding: 40px ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.round};
 
   hr {
-    border: 1.5px solid ${theme.colors.primary};
-    margin-bottom: 40px;
+    border: 1.5px solid ${theme.colors.loginLine};
+    margin-bottom: ${theme.gridUnit * 5}px;
   }
 
   h1 {
-    color: white;
-    font-size: 40px;
-  }
-  h2 {
-    color: #8e8b8b;
-    margin: 20px 10px 10 px;
-    color: white;
-    font-size: 36px;
+    font-family: "Amatic SC", cursive;
+
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.P5};
   }
 
-  .icon-button {
+  h2 {
+    font-family: "Amatic SC", cursive;
+
+    margin: 20px 10px 10px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.P4};
+  }
+
+  .icon {
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 15px;
-    color: white;
+    align-items: center;
+    font-size: ${theme.fonts.P0};
+    margin-left: 10px;
   }
 `;
