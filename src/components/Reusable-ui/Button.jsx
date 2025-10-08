@@ -33,15 +33,15 @@ const StyledButton = styled.button`
     margin-right: 8px;
   }
 
+  .icon {
+    position: relative;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 1;
+    padding: 18px 24px;
+    cursor: pointer;
+    font-size: 15px;
   }
-  position: relative;
-  white-space: nowrap;
-  text-decoration: none;
-  line-height: 1;
-  padding: 18px 24px;
-  cursor: pointer;
-  font-size: 15px;
-
   span {
     color: white;
     font-weight: bold;
