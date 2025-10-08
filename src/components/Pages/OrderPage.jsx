@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useParams } from "react-router";
-import Main from "../Reusable-ui/Main";
+
 import Navbar from "./Navbar";
 import { theme } from "../../theme";
+import Main from "../Main/Main";
 
 const OrderPage = () => {
   const { inputAss } = useParams();
