@@ -39,8 +39,17 @@ const ProductStyle = styled.div`
     }
   }
 
-  .description {
+  .info-text {
     border: 1px solid blue;
-    display: flex;
+    display: grid;
+
+    .description {
+      .price {
+        background: green;
+      }
+
+      .add-button {
+      }
+    }
   }
 `;
