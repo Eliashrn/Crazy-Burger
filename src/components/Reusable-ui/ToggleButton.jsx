@@ -4,7 +4,7 @@ import { theme } from "../../theme";
 export default function ToggleButton({
   isChecked,
   onToggle,
-  F06: NAVBAR > = "Fermer",
+  labelIfChecked = "Fermer",
   labelIfUnchecked = "Ouvrir",
 }) {
   return (
