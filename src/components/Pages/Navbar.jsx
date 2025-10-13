@@ -3,6 +3,7 @@ import Logo from "../Reusable-ui/Logo";
 import styled from "styled-components";
 import Profile from "./Profile";
 import { theme } from "../../theme";
+import ToggleButton from "../Reusable-ui/ToggleButton.jsX";
 
 const Navbar = () => {
   const { inputAss } = useParams();
@@ -14,7 +15,10 @@ const Navbar = () => {
       />
 
       <div className="right-side">
-        {/* <div className="admin-button">Admin button</div> */}
+        <ToggleButton
+          labelIfUnchecked="ACTIVER LE MODE ADMIN"
+          labelIfChecked="DÉSACTIVER LE MODE ADMIN"
+        />
         <Profile username={inputAss} />
         <div className="picture"></div>
       </div>
