@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Tabs from "../../Reusable-ui/Tabs";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FiChevronDown } from "react-icons/fi";
 
-export default function AdminTabs() {
+export default function AdminTabs({ show, setShow }) {
   return (
     <AdminTabsStyled>
-      <Tabs Icon={<FiChevronDown />} />
+      <Tabs Icon={<FiChevronDown />} onClick={() => setShow(!show)} />
     </AdminTabsStyled>
   );
 }

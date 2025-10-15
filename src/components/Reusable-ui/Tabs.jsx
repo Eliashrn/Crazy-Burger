@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Tabs({ Icon }) {
+export default function Tabs({ Icon, onClick }) {
   return (
-    <TabsStyles>
+    <TabsStyled onClick={onClick}>
       <div className="icon">{Icon}</div>
-    </TabsStyles>
+    </TabsStyled>
   );
 }
 
-const TabsStyles = styled.button`
+const TabsStyled = styled.button`
   border: 1px solid blue;
   height: 43px;
   padding: 0 22px;

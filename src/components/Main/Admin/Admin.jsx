@@ -1,12 +1,13 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import AdminTabs from "./AdminTabs";
 import AdminPanel from "./AdminPanel";
 
 export default function Admin() {
+  const [show, setShow] = useState(false);
   return (
     <AdminStyles>
-      <AdminTabs />
+      <AdminTabs show={show} setShow={setShow} />
       <AdminPanel />
     </AdminStyles>
   );
