@@ -5,11 +5,12 @@ import Profile from "./Profile";
 import { theme } from "../../theme";
 import ToggleButton from "../Reusable-ui/ToggleButton.jsX";
 import { ToastContainer, toast } from "react-toastify";
-import { useState } from "react";
+import { useContext } from "react";
 import { FaUserSecret } from "react-icons/fa";
+import OrderContext from "../../context/OrderContext";
 
 const Navbar = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { isAdmin, setIsAdmin } = useContext(OrderContext);
 
   const notify = () => {
     if (!isAdmin) {
@@ -38,6 +39,7 @@ const Navbar = () => {
 
       <div className="right-side">
         <ToggleButton
+          isChecked={isAdmin}
           labelIfUnchecked="ACTIVER LE MODE ADMIN"
           labelIfChecked="DÉSACTIVER LE MODE ADMIN"
           onToggle={notify}
