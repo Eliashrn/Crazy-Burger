@@ -6,11 +6,19 @@ import { useState } from "react";
 import OrderContext from "../../context/OrderContext";
 
 const OrderPage = () => {
-  const [isAdmin, setIsAdmin] = useState(true);
-
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isCollapsed, setCollapsed] = useState(false);
+  const [isAddSelective, setisAddSelective] = useState(true);
+  const [isEditSelected, setisEditSelected] = useState(false);
   const orderContextValue = {
     isAdmin,
     setIsAdmin,
+    isCollapsed,
+    setCollapsed,
+    isAddSelective,
+    setisAddSelective,
+    isEditSelected,
+    setisEditSelected,
   };
 
   return (
