@@ -1,19 +1,35 @@
 import styled from "styled-components";
-import { useParams } from "react-router";
-
 import Navbar from "./Navbar";
 import { theme } from "../../theme";
 import Main from "../Main/Main";
+import { useState } from "react";
+import OrderContext from "../../context/OrderContext";
 
 const OrderPage = () => {
-  const { inputAss } = useParams();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isCollapsed, setCollapsed] = useState(false);
+  const [isAddSelective, setisAddSelective] = useState(true);
+  const [isEditSelected, setisEditSelected] = useState(false);
+  const orderContextValue = {
+    isAdmin,
+    setIsAdmin,
+    isCollapsed,
+    setCollapsed,
+    isAddSelective,
+    setisAddSelective,
+    isEditSelected,
+    setisEditSelected,
+  };
+
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <Navbar username={inputAss} />
-        <Main />
-      </div>
-    </OrderPageStyled>
+    <OrderContext.Provider value={orderContextValue}>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </OrderContext.Provider>
   );
 };
 
