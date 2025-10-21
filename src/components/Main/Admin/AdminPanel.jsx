@@ -2,16 +2,15 @@ import styled from "styled-components";
 import { theme } from "../../../theme";
 import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
+import { getTabSelected, tabsConfig } from "./tabsConfig";
 
 export default function AdminPanel() {
-  const { isAddSelective, isEditSelected } = useContext(OrderContext);
+  const { currentTabSelected } = useContext(OrderContext);
 
-  return (
-    <AdminPanelStyled className="panel-admin">
-      {isAddSelective && "Ajouter un produit"}
-      {isEditSelected && "Modifier un produit"}
-    </AdminPanelStyled>
-  );
+  const tabs = tabsConfig;
+  const tabSelected = getTabSelected(tabs, currentTabSelected);
+
+  return <AdminPanelStyled>{tabSelected.label}</AdminPanelStyled>;
 }
 
 const AdminPanelStyled = styled.div`
