@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "../../Reusable-ui/Input";
+import Input from "../../../Reusable-ui/Input";
 import { PiHamburgerFill } from "react-icons/pi";
 import { MdPhotoCamera } from "react-icons/md";
 import { LuEuro } from "react-icons/lu";

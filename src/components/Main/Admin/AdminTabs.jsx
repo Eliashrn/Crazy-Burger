@@ -6,7 +6,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
-import { tabsConfig } from "./tabsConfig";
+import { tabsConfig } from "./AdminPanel/tabsConfig";
 
 export default function AdminTabs() {
   const {
