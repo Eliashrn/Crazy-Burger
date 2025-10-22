@@ -4,7 +4,6 @@ import { PiHamburgerFill } from "react-icons/pi";
 import { MdPhotoCamera } from "react-icons/md";
 import { LuEuro } from "react-icons/lu";
 import styled from "styled-components";
-import { theme } from "../../../theme";
 
 export default function AddProduct() {
   return (
