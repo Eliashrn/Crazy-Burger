@@ -7,6 +7,9 @@ const OrderContext = createContext({
   setIsCollapsed: () => {},
   currentTabSelected: false,
   setCurrentTabSelected: () => {},
+  menu: [],
+  setMenu: () => {},
+  handleAdfdProduct: () => {},
 });
 
 export default OrderContext;
