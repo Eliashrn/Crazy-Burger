@@ -8,7 +8,6 @@ const OrderContext = createContext({
   currentTabSelected: false,
   setCurrentTabSelected: () => {},
   menu: [],
-  setMenu: () => {},
   handleAdfdProduct: () => {},
 });
 
