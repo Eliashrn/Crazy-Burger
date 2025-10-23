@@ -19,11 +19,10 @@ export default function AddProduct() {
   //Comportements
 
   const handleChange = (e) => {
-    const newValue = e.target.value;
-    const name = e.target.name;
+    const { name, value } = e.target;
     setNewProduct({
       ...newProduct,
-      [name]: newValue,
+      [name]: value,
     });
   };
 
@@ -33,7 +32,7 @@ export default function AddProduct() {
   };
 
   const newProductToAdd = {
-    id: new Date().getTime(),
+    id: crypto.randomUUID(),
     ...newProduct,
   };
 
