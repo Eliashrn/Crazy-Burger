@@ -19,4 +19,5 @@ const AdminStyles = styled.div`
   left: 0;
   right: 0;
   position: absolute;
+  z-index: 2;
 `;

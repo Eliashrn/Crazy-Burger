@@ -7,7 +7,7 @@ import OrderContext from "../../context/OrderContext";
 
 export default function Menu() {
   useContext(OrderContext);
-  const { menu } = useContext(OrderContext);
+  const { menu, isModeAdmin } = useContext(OrderContext);
 
   return (
     <MenuStyled className="menu">
@@ -20,6 +20,7 @@ export default function Menu() {
               imageSource === "" ? "/image/coming-soon.png" : imageSource
             }
             leftDescription={formatPrice(price)}
+            hasDelete={isModeAdmin}
           />
         );
       })}
