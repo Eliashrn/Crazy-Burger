@@ -5,16 +5,17 @@ import { LuEuro } from "react-icons/lu";
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
 
+const EMPTY_PRODUCT = {
+  title: "",
+  imageSource: "",
+  price: "",
+};
+
 export default function AddProduct() {
   //State
   const { handleAddProduct } = useContext(OrderContext);
 
-  const [newProduct, setNewProduct] = useState({
-    id: "",
-    imageSource: "",
-    title: "",
-    price: 0,
-  });
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   //Comportements
 
@@ -29,6 +30,7 @@ export default function AddProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleAddProduct(newProductToAdd);
+    setNewProduct(EMPTY_PRODUCT);
   };
 
   const newProductToAdd = {
@@ -52,21 +54,21 @@ export default function AddProduct() {
           name="title"
           value={newProduct.title ? newProduct.title : ""}
           type="text"
-          placeholder="Product Name"
+          placeholder="Nom du produit (ex: Super Burger)"
           onChange={handleChange}
         />
         <input
           name="imageSource"
           value={newProduct.imageSource ? newProduct.imageSource : ""}
           type="text"
-          placeholder="Aucune image"
+          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           onChange={handleChange}
         />
         <input
           name="price"
           value={newProduct.price ? newProduct.price : ""}
           type="number"
-          placeholder="Product Price"
+          placeholder="Prix"
           onChange={handleChange}
         />
       </div>
