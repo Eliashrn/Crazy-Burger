@@ -36,16 +36,6 @@ export default function AddProduct() {
     ...newProduct,
   };
 
-  // const newProduct = {
-  //   id: 8,
-  //   imageSource: "/image/fries3.png",
-  //   title: "New York Fries",
-  //   price: 3.1678,
-  //   quantity: 0,
-  //   isAvailable: true,
-  //   isAdvertised: false,
-  // };
-
   //Render
 
   return (
