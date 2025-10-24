@@ -4,6 +4,7 @@ import { MdPhotoCamera } from "react-icons/md";
 import { LuEuro } from "react-icons/lu";
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
+import { FiCheck } from "react-icons/fi";
 
 const EMPTY_PRODUCT = {
   title: "",
@@ -16,6 +17,7 @@ export default function AddProduct() {
   const { handleAddProduct } = useContext(OrderContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [successSubmit, setSuccessSubmit] = useState(false);
 
   //Comportements
 
@@ -31,6 +33,14 @@ export default function AddProduct() {
     e.preventDefault();
     handleAddProduct(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
+    succesSubmit();
+  };
+
+  const succesSubmit = () => {
+    setSuccessSubmit(true);
+    setTimeout(() => {
+      setSuccessSubmit(false);
+    }, 2000);
   };
 
   const newProductToAdd = {
@@ -74,6 +84,14 @@ export default function AddProduct() {
       </div>
       <div className="submit-button">
         <button>Submit</button>
+        {successSubmit && (
+          <div>
+            <span>
+              <FiCheck />{" "}
+            </span>
+            <span>Produit ajouté avec succès</span>
+          </div>
+        )}
       </div>
     </FormStyled>
   );
@@ -114,5 +132,6 @@ const FormStyled = styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr;
     background: orange;
+    align-items: center;
   }
 `;
