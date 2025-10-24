@@ -7,7 +7,7 @@ import OrderContext from "../../context/OrderContext";
 
 export default function Menu() {
   useContext(OrderContext);
-  const { menu, isModeAdmin } = useContext(OrderContext);
+  const { menu, isModeAdmin, onDelete } = useContext(OrderContext);
 
   return (
     <MenuStyled className="menu">
@@ -21,6 +21,7 @@ export default function Menu() {
             }
             leftDescription={formatPrice(price)}
             hasDelete={isModeAdmin}
+            onClick={() => onDelete(id)}
           />
         );
       })}

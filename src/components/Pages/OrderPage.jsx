@@ -23,6 +23,14 @@ const OrderPage = () => {
     setMenu(menuUpdated);
   };
 
+  const onDelete = (idDelete) => {
+    const menuCpy = [...menu];
+
+    const menuUpdated = menuCpy.filter((product) => product.id !== idDelete);
+    // Mettre à jour le state
+    setMenu(menuUpdated);
+  };
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -32,6 +40,7 @@ const OrderPage = () => {
     setCurrentTabSelected,
     menu,
     handleAddProduct,
+    onDelete,
   };
 
   return (
