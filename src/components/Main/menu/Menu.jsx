@@ -1,21 +1,21 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
-import Card from "../Reusable-ui/Card";
-import { formatPrice } from "./../../utils/maths";
+import { theme } from "../../../theme";
+import Card from "../../Reusable-ui/Card";
+import { formatPrice } from "../../../utils/maths";
 import { useContext } from "react";
-import OrderContext from "../../context/OrderContext";
+import OrderContext from "../../../context/OrderContext";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
   useContext(OrderContext);
   const { menu, isModeAdmin, onDelete, restMenu } = useContext(OrderContext);
 
   if (menu.length === 0) {
-    return (
-      <div>
-        <span>Pas de produits disponibles</span>
-        <button onClick={restMenu}>Réinitialiser le menu</button>
-      </div>
-    );
+    if (!isModeAdmin) {
+      return <EmptyMenuClient />;
+    }
+    return <EmptyMenuAdmin restMenu={restMenu} />;
   }
 
   return (
