@@ -1,6 +1,6 @@
-import { Form } from "../Form";
 import styled from "styled-components";
 import Logo from "../Reusable-ui/Logo";
+import { Form } from "../Reusable-ui/Form";
 
 export default function LoginPage() {
   return (

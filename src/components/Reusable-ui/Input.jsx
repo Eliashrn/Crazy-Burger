@@ -1,9 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Input({ value, onChange, Icon, ...extraProps }) {
+export default function Input({
+  value,
+  onChange,
+  Icon,
+  className,
+  ...extraProps
+}) {
   return (
-    <InputStyled>
+    <InputStyled className={className}>
       <div className="icon">{Icon && Icon}</div>
       <input type="text" value={value} onChange={onChange} {...extraProps} />
     </InputStyled>
@@ -11,31 +17,29 @@ export default function Input({ value, onChange, Icon, ...extraProps }) {
 }
 
 const InputStyled = styled.div`
-  background: #fff;
-  border-radius: 5px;
+  background: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
   padding: 18px 24px;
-  margin: 18px 0;
 
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: ${theme.fonts.SM};
-    margin-right: 8px;
-    margin-left: 10px;
+    margin: 0 8px 0 10px;
     color: ${theme.colors.greySemiDark};
   }
 
   input {
     border: none;
-    font-size: 15px;
-    color: #17161a;
+    font-size: ${theme.fonts.SM};
+    color: ${theme.colors.dark};
     width: 100%;
   }
   &::placeholder {
     background: white;
-    color: lightgrey;
+    color: ${theme.colors.greyMedium};
   }
 `;

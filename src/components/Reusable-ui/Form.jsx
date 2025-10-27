@@ -2,10 +2,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForwardSharp } from "react-icons/io5";
-import Input from "./Reusable-ui/Input";
-import Button from "./Reusable-ui/Button";
+import Input from "./Input";
+import Button from "./Button";
 import { useNavigate } from "react-router";
-import { theme } from "../theme";
+import { theme } from "../../theme";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
@@ -30,6 +30,7 @@ export function Form() {
           onChange={(e) => setInputValue(e.target.value)}
           placeholder={"Entrez votre prénom..."}
           Icon={<BsPersonCircle />}
+          className="input-login"
         />
 
         <Button
@@ -67,5 +68,9 @@ const StyledForm = styled.form`
     margin: 20px 10px 10px;
     color: ${theme.colors.white};
     font-size: ${theme.fonts.P4};
+  }
+
+  .input-login {
+    margin: 18px 0;
   }
 `;
