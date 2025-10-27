@@ -10,6 +10,7 @@ const OrderContext = createContext({
   menu: [],
   handleAddProduct: () => {},
   onDelete: () => {},
+  restMenu: () => {},
 });
 
 export default OrderContext;

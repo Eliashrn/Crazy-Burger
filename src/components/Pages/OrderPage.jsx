@@ -8,11 +8,15 @@ import { fakeMenu } from "../../fakeData/fakeMenu";
 
 const OrderPage = () => {
   const [isModeAdmin, setIsModeAdmin] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const [menu, setMenu] = useState(fakeMenu.SMALL);
 
   // comportements
+
+  const restMenu = () => {
+    setMenu(fakeMenu.SMALL);
+  };
 
   const handleAddProduct = (newProduct) => {
     //1. Copie du tableau menu
@@ -41,6 +45,7 @@ const OrderPage = () => {
     menu,
     handleAddProduct,
     onDelete,
+    restMenu,
   };
 
   return (

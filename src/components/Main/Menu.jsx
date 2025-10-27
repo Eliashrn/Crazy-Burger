@@ -7,7 +7,16 @@ import OrderContext from "../../context/OrderContext";
 
 export default function Menu() {
   useContext(OrderContext);
-  const { menu, isModeAdmin, onDelete } = useContext(OrderContext);
+  const { menu, isModeAdmin, onDelete, restMenu } = useContext(OrderContext);
+
+  if (menu.length === 0) {
+    return (
+      <div>
+        <span>Pas de produits disponibles</span>
+        <button onClick={restMenu}>Réinitialiser le menu</button>
+      </div>
+    );
+  }
 
   return (
     <MenuStyled className="menu">
