@@ -18,36 +18,30 @@ export default function Input({
 }
 
 const InputStyled = styled.div`
-  /* background: ${theme.colors.white}; */
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
-  padding: 18px 24px;
 
   .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: ${theme.fonts.SM};
-    margin: 0 8px 0 10px;
-    color: ${theme.colors.greySemiDark};
+    font-size: ${theme.fonts.size.SM};
+    margin: 0 13px 0 8px;
+    display: flex; // to center icon vertically
   }
 
   input {
     border: none;
-    font-size: ${theme.fonts.SM};
-    color: ${theme.colors.dark};
+    font-size: ${theme.fonts.size.SM};
     width: 100%;
+
     &::placeholder {
       color: ${theme.colors.greyMedium};
     }
   }
 
-  ${(props) => props.version === "normal" && extraNormalStyles};
-  ${(props) => props.version === "minimalist" && minimalistStyles};
+  ${({ version }) => extraStyle[version]}
 `;
 
-const extraNormalStyles = css`
+const extraStyleNormal = css`
   background-color: ${theme.colors.white};
   padding: 18px 28px;
   color: ${theme.colors.greySemiDark};
@@ -61,17 +55,22 @@ const extraNormalStyles = css`
   }
 `;
 
-const minimalistStyles = css`
+const extraStyleMinimalist = css`
   background-color: ${theme.colors.background_white};
   padding: 8px 16px;
   color: ${theme.colors.greyBlue};
 
   input {
-    background: ${theme.colors.red};
+    background: ${theme.colors.background_white}; ////+
     color: ${theme.colors.dark};
 
-    &::focus {
-      outline: 0;
+    &:focus {
+      outline: 0; //// add outline
     }
   }
 `;
+
+const extraStyle = {
+  normal: extraStyleNormal,
+  minimalist: extraStyleMinimalist,
+};

@@ -69,7 +69,7 @@ export default function AddProduct() {
           placeholder="Nom du produit (ex: Super Burger)"
           onChange={handleChange}
           Icon={<PiHamburgerFill />}
-          version="minimalistStyles"
+          version="extraStyleMinimalist"
         />
         <Input
           name="imageSource"
@@ -78,16 +78,16 @@ export default function AddProduct() {
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           onChange={handleChange}
           Icon={<MdPhotoCamera />}
-          version="minimalistStyles"
+          version="extraStyleMinimalist"
         />
         <Input
           name="price"
           value={newProduct.price ? newProduct.price : ""}
-          type="text"
+          type="number"
           placeholder="Prix"
           onChange={handleChange}
           Icon={<LuEuro />}
-          version="minimalistStyles"
+          version="extraStyleMinimalist"
         />
       </div>
       <div className="submit-button">
@@ -143,6 +143,8 @@ const FormStyled = styled.form`
   .input-fields {
     grid-area: 1 / 2 / -2 / 3;
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
   }
 
   .submit-button {
