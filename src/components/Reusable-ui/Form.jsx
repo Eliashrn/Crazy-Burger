@@ -31,6 +31,7 @@ export function Form() {
           placeholder={"Entrez votre prénom..."}
           Icon={<BsPersonCircle />}
           className="input-login"
+          version="normal"
         />
 
         <Button

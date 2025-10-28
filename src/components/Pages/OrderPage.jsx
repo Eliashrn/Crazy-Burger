@@ -72,8 +72,11 @@ const OrderPageStyled = styled.div`
 
   .container {
     border-radius: ${theme.borderRadius.extraRound};
-    height: 95vh;
+    height: 933px;
     width: 1400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound};
   }
 `;
 

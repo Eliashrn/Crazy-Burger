@@ -6,6 +6,7 @@ import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
 import { FiCheck } from "react-icons/fi";
 import { theme } from "../../../../theme";
+import Input from "../../../Reusable-ui/Input";
 
 const EMPTY_PRODUCT = {
   title: "",
@@ -61,26 +62,32 @@ export default function AddProduct() {
         )}
       </div>
       <div className="input-fields">
-        <input
+        <Input
           name="title"
           value={newProduct.title ? newProduct.title : ""}
           type="text"
           placeholder="Nom du produit (ex: Super Burger)"
           onChange={handleChange}
+          Icon={<PiHamburgerFill />}
+          version="minimalistStyles"
         />
-        <input
+        <Input
           name="imageSource"
           value={newProduct.imageSource ? newProduct.imageSource : ""}
           type="text"
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           onChange={handleChange}
+          Icon={<MdPhotoCamera />}
+          version="minimalistStyles"
         />
-        <input
+        <Input
           name="price"
           value={newProduct.price ? newProduct.price : ""}
-          type="number"
+          type="text"
           placeholder="Prix"
           onChange={handleChange}
+          Icon={<LuEuro />}
+          version="minimalistStyles"
         />
       </div>
       <div className="submit-button">
@@ -112,7 +119,6 @@ const FormStyled = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
 
     img {
       width: 100%;
@@ -135,18 +141,14 @@ const FormStyled = styled.form`
   }
 
   .input-fields {
-    background: green;
     grid-area: 1 / 2 / -2 / 3;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
   }
 
   .submit-button {
     grid-area: 4 / -2 / -1 / -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: orange;
     align-items: center;
   }
 `;
