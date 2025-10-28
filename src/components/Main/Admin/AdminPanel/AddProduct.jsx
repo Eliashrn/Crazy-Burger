@@ -7,6 +7,7 @@ import OrderContext from "../../../../context/OrderContext";
 import { FiCheck } from "react-icons/fi";
 import { theme } from "../../../../theme";
 import Input from "../../../Reusable-ui/Input";
+import Button from "../../../Reusable-ui/Button";
 
 const EMPTY_PRODUCT = {
   title: "",
@@ -90,14 +91,18 @@ export default function AddProduct() {
           version="extraStyleMinimalist"
         />
       </div>
-      <div className="submit-button">
-        <button>Submit</button>
+      <div className="submit">
+        <Button
+          className="submit-button"
+          label={"Ajouter un noueau produit"}
+          version="success"
+        />
         {successSubmit && (
           <div>
             <span>
               <FiCheck />{" "}
             </span>
-            <span>Produit ajouté avec succès</span>
+            <span>Ajouté avec succès</span>
           </div>
         )}
       </div>
@@ -147,7 +152,7 @@ const FormStyled = styled.form`
     grid-template-rows: repeat(3, 1fr);
   }
 
-  .submit-button {
+  .submit {
     grid-area: 4 / -2 / -1 / -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
