@@ -81,7 +81,7 @@ const extraStyleSuccess = css`
   height: 35px;
   padding: 0 1.5em;
   font-weight: ${theme.fonts.weights.semiBold};
-  & :hover {
+  &:hover {
     background: ${theme.colors.white};
     color: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};

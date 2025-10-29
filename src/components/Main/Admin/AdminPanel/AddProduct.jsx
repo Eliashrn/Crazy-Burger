@@ -9,6 +9,7 @@ import { theme } from "../../../../theme";
 import Input from "../../../Reusable-ui/Input";
 import Button from "../../../Reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 
 export const EMPTY_PRODUCT = {
   title: "",
@@ -95,12 +96,7 @@ export default function AddProduct() {
           label={"Ajouter un noueau produit"}
           version="success"
         />
-        {successSubmit && (
-          <div className="submit-message">
-            <FiCheck className="icon" />
-            <span className="message">Ajouté avec succès</span>
-          </div>
-        )}
+        {successSubmit && <SubmitMessage />}
       </div>
     </FormStyled>
   );
@@ -127,20 +123,5 @@ const FormStyled = styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-  }
-
-  .submit-message {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 5px;
-
-    .icon {
-      color: ${theme.colors.success};
-      margin-left: 10px;
-      width: 1em;
-      height: 1em;
-      border: 1px solid ${theme.colors.success};
-    }
   }
 `;
