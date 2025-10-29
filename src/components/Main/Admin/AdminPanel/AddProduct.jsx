@@ -4,12 +4,11 @@ import { MdPhotoCamera } from "react-icons/md";
 import { LuEuro } from "react-icons/lu";
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
-import { FiCheck } from "react-icons/fi";
-import { theme } from "../../../../theme";
 import Input from "../../../Reusable-ui/Input";
 import Button from "../../../Reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
+import { getInputTextConfig } from "./getInputTextConfig";
 
 export const EMPTY_PRODUCT = {
   title: "",
@@ -55,6 +54,8 @@ export default function AddProduct() {
 
   //Render
 
+  const inputTexts = getInputTextConfig(newProduct, handleChange);
+
   return (
     <FormStyled onSubmit={handleSubmit}>
       <ImagePreview
@@ -62,40 +63,16 @@ export default function AddProduct() {
         title={newProduct.title}
       />
       <div className="input-fields">
-        <Input
-          name="title"
-          value={newProduct.title ? newProduct.title : ""}
-          type="text"
-          placeholder="Nom du produit (ex: Super Burger)"
-          onChange={handleChange}
-          Icon={<PiHamburgerFill />}
-          version="extraStyleMinimalist"
-        />
-        <Input
-          name="imageSource"
-          value={newProduct.imageSource ? newProduct.imageSource : ""}
-          type="text"
-          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-          onChange={handleChange}
-          Icon={<MdPhotoCamera />}
-          version="extraStyleMinimalist"
-        />
-        <Input
-          name="price"
-          value={newProduct.price ? newProduct.price : ""}
-          type="number"
-          placeholder="Prix"
-          onChange={handleChange}
-          Icon={<LuEuro />}
-          version="extraStyleMinimalist"
-        />
+        {inputTexts.map((input) => (
+          <Input {...input} version="minimalist" />
+        ))}
       </div>
       <div className="submit">
         <Button
           className="submit-button"
           label={"Ajouter un noueau produit"}
           version="success"
-        />
+        />{" "}
         {successSubmit && <SubmitMessage />}
       </div>
     </FormStyled>
@@ -114,14 +91,13 @@ const FormStyled = styled.form`
   .input-fields {
     grid-area: 1 / 2 / -2 / 3;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-row-gap: 8px;
   }
 
   .submit {
     grid-area: 4 / -2 / -1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    position: relative;
     align-items: center;
   }
 `;
