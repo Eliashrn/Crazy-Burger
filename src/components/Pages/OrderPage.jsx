@@ -5,12 +5,14 @@ import Main from "../Main/Main";
 import { useState } from "react";
 import OrderContext from "../../context/OrderContext";
 import { fakeMenu } from "../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "../Main/Admin/AdminPanel/AddProduct";
 
 const OrderPage = () => {
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(fakeMenu.SMALL);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   // comportements
 
@@ -36,6 +38,8 @@ const OrderPage = () => {
   };
 
   const orderContextValue = {
+    newProduct,
+    setNewProduct,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,

@@ -11,6 +11,8 @@ const OrderContext = createContext({
   handleAddProduct: () => {},
   onDelete: () => {},
   restMenu: () => {},
+  newProduct: [],
+  setNewProduct: () => {},
 });
 
 export default OrderContext;

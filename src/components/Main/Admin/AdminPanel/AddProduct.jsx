@@ -9,7 +9,7 @@ import { theme } from "../../../../theme";
 import Input from "../../../Reusable-ui/Input";
 import Button from "../../../Reusable-ui/Button";
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   title: "",
   imageSource: "",
   price: "",
@@ -17,9 +17,9 @@ const EMPTY_PRODUCT = {
 
 export default function AddProduct() {
   //State
-  const { handleAddProduct } = useContext(OrderContext);
+  const { handleAddProduct, newProduct, setNewProduct } =
+    useContext(OrderContext);
 
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [successSubmit, setSuccessSubmit] = useState(false);
 
   //Comportements
@@ -98,11 +98,9 @@ export default function AddProduct() {
           version="success"
         />
         {successSubmit && (
-          <div>
-            <span>
-              <FiCheck />{" "}
-            </span>
-            <span>Ajouté avec succès</span>
+          <div className="submit-message">
+            <FiCheck className="icon" />
+            <span className="message">Ajouté avec succès</span>
           </div>
         )}
       </div>
@@ -157,5 +155,20 @@ const FormStyled = styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+  }
+
+  .submit-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+
+    .icon {
+      color: ${theme.colors.success};
+      margin-left: 10px;
+      width: 1em;
+      height: 1em;
+      border: 1px solid ${theme.colors.success};
+    }
   }
 `;
