@@ -64,7 +64,7 @@ export default function AddProduct() {
       />
       <div className="input-fields">
         {inputTexts.map((input) => (
-          <Input {...input} version="minimalist" />
+          <Input key={input.id} {...input} version="minimalist" />
         ))}
       </div>
       <div className="submit">

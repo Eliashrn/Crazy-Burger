@@ -14,6 +14,7 @@ export const getInputTextConfig = (newProduct, handleChange) => [
     version: "extraStyleMinimalist",
   },
   {
+    id: "1",
     name: "imageSource",
     value: newProduct.imageSource ? newProduct.imageSource : "",
     type: "text",
@@ -24,6 +25,7 @@ export const getInputTextConfig = (newProduct, handleChange) => [
     version: "extraStyleMinimalist",
   },
   {
+    id: "2",
     name: "price",
     value: newProduct.price ? newProduct.price : "",
     type: "text",
