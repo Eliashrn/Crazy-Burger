@@ -62,9 +62,9 @@ const ProfileStyled = styled.div`
   }
 
   .picture {
-    height: auto;
     display: flex;
     height: 100%;
+    font-size: 2rem;
     font-size: ${theme.fonts.P4};
     color: ${theme.colors.greyBlue};
   }
