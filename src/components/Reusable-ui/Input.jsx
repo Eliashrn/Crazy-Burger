@@ -1,39 +1,76 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { theme } from "../../theme";
 
-export default function Input({ value, onChange, Icon, ...extraProps }) {
+export default function Input({
+  value,
+  onChange,
+  Icon,
+  className,
+  version = "normal",
+  ...extraProps
+}) {
   return (
-    <InputStyled>
-      {Icon}
+    <InputStyled className={className} version={version}>
+      <div className="icon">{Icon && Icon}</div>
       <input type="text" value={value} onChange={onChange} {...extraProps} />
     </InputStyled>
   );
 }
 
-const InputStyled = styled.div` 
-    background: #fff;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
+const InputStyled = styled.div`
+  border-radius: ${theme.borderRadius.round};
+  display: flex;
+  align-items: center;
 
-    .icon {
-      font-size: 15px;
-      margin-right: 8px;
-      color: #93a2b1;
+  .icon {
+    font-size: ${theme.fonts.size.SM};
+    margin: 0 13px 0 8px;
+    display: flex; // to center icon vertically
+  }
+
+  input {
+    border: none;
+    font-size: ${theme.fonts.size.SM};
+    width: 100%;
+
+    &::placeholder {
+      color: ${theme.colors.greyMedium};
     }
+  }
 
-    input {
-      border: none;
-      font-size: 15px;
-      color: #17161a;
-      width: 100%;
-
-      &placeholder {
-      background: white;
-      color: lightgrey;
-    }
-
-  
-  
+  ${({ version }) => extraStyle[version]}
 `;
+
+const extraStyleNormal = css`
+  background-color: ${theme.colors.white};
+  padding: 18px 28px;
+  color: ${theme.colors.greySemiDark};
+
+  input {
+    color: ${theme.colors.dark};
+
+    &::placeholder {
+      background: ${theme.colors.white};
+    }
+  }
+`;
+
+const extraStyleMinimalist = css`
+  background-color: ${theme.colors.background_white};
+  padding: 8px 16px;
+  color: ${theme.colors.greyBlue};
+
+  input {
+    background: ${theme.colors.background_white}; ////+
+    color: ${theme.colors.dark};
+
+    &:focus {
+      outline: 0; //// add outline
+    }
+  }
+`;
+
+const extraStyle = {
+  normal: extraStyleNormal,
+  minimalist: extraStyleMinimalist,
+};

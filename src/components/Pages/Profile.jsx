@@ -54,17 +54,17 @@ const ProfileStyled = styled.div`
           color: ${theme.colors.greyBlue};
           font-weight: ${theme.fonts.weights.medium};
           text-decoration: none;
-          position: relative;
           bottom: 2px;
+          position: relative;
         }
       }
     }
   }
 
   .picture {
-    height: auto;
     display: flex;
     height: 100%;
+    font-size: 2rem;
     font-size: ${theme.fonts.P4};
     color: ${theme.colors.greyBlue};
   }

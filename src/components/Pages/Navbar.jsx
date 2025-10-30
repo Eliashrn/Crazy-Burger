@@ -10,10 +10,10 @@ import { FaUserSecret } from "react-icons/fa";
 import OrderContext from "../../context/OrderContext";
 
 const Navbar = () => {
-  const { isAdmin, setIsAdmin } = useContext(OrderContext);
+  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
 
   const notify = () => {
-    if (!isAdmin) {
+    if (!isModeAdmin) {
       toast.info("Mode admin activé", {
         icon: <FaUserSecret size={30} />,
         theme: "dark",
@@ -26,7 +26,7 @@ const Navbar = () => {
         progress: undefined,
       });
     }
-    setIsAdmin(!isAdmin);
+    setIsModeAdmin(!isModeAdmin);
   };
 
   const { inputAss } = useParams();
@@ -39,7 +39,7 @@ const Navbar = () => {
 
       <div className="right-side">
         <ToggleButton
-          isChecked={isAdmin}
+          isChecked={isModeAdmin}
           labelIfUnchecked="ACTIVER LE MODE ADMIN"
           labelIfChecked="DÉSACTIVER LE MODE ADMIN"
           onToggle={notify}

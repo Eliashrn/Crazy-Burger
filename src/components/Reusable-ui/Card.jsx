@@ -1,11 +1,26 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
-
 import Button from "./Button";
+import { TiDelete } from "react-icons/ti";
 
-export default function Card({ title, imageSource, leftDescription }) {
+export default function Card({
+  title,
+  imageSource,
+  leftDescription,
+  hasDelete,
+  onClick,
+}) {
   return (
     <CardStyled className="produit">
+      {hasDelete && (
+        <button
+          className="delete-button"
+          aria-label="delete-button"
+          onClick={onClick}
+        >
+          <TiDelete className="icon" />
+        </button>
+      )}
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -32,6 +47,35 @@ const CardStyled = styled.div`
   padding-bottom: 10px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
+  position: relative;
+
+  .delete-button {
+    border: 1px solid red;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    color: ${theme.colors.primary};
+    z-index: 2;
+    padding: 0;
+    background: none;
+    border: none;
+
+    .icon {
+      width: 100%;
+      height: 100%;
+
+      &:hover {
+        color: ${theme.colors.red};
+      }
+
+      &:active {
+        color: ${theme.colors.primary};
+      }
+    }
+  }
 
   .image {
     width: 100%;

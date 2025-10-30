@@ -4,21 +4,52 @@ import { theme } from "../../theme";
 import Main from "../Main/Main";
 import { useState } from "react";
 import OrderContext from "../../context/OrderContext";
+import { fakeMenu } from "../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "../Main/Admin/AdminPanel/AddProduct";
 
 const OrderPage = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isCollapsed, setCollapsed] = useState(false);
-  const [isAddSelective, setisAddSelective] = useState(true);
-  const [isEditSelected, setisEditSelected] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [menu, setMenu] = useState(fakeMenu.SMALL);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+
+  // comportements
+
+  const restMenu = () => {
+    setMenu(fakeMenu.SMALL);
+  };
+
+  const handleAddProduct = (newProduct) => {
+    //1. Copie du tableau menu
+    const menuCopy = [...menu];
+    //2. Manipuler la copie du tableau
+    const menuUpdated = [newProduct, ...menuCopy];
+    //3. Mettre à jour le state avec la copie modifiée
+    setMenu(menuUpdated);
+  };
+
+  const onDelete = (idDelete) => {
+    const menuCpy = [...menu];
+
+    const menuUpdated = menuCpy.filter((product) => product.id !== idDelete);
+    // Mettre à jour le state
+    setMenu(menuUpdated);
+  };
+
   const orderContextValue = {
-    isAdmin,
-    setIsAdmin,
+    newProduct,
+    setNewProduct,
+    isModeAdmin,
+    setIsModeAdmin,
     isCollapsed,
-    setCollapsed,
-    isAddSelective,
-    setisAddSelective,
-    isEditSelected,
-    setisEditSelected,
+    setIsCollapsed,
+    currentTabSelected,
+    setCurrentTabSelected,
+    menu,
+    handleAddProduct,
+    onDelete,
+    restMenu,
   };
 
   return (
@@ -45,8 +76,11 @@ const OrderPageStyled = styled.div`
 
   .container {
     border-radius: ${theme.borderRadius.extraRound};
-    height: 95vh;
+    height: 933px;
     width: 1400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound};
   }
 `;
 

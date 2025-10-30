@@ -1,17 +1,18 @@
 import { createContext } from "react";
 
 const OrderContext = createContext({
-  isAdmin: false,
-  setIsAdmin: () => {},
-
+  isModeAdmin: false,
+  setIsModeAdmin: () => {},
   isCollapsed: false,
-  setCollapsed: () => {},
-
-  isAddSelective: false,
-  setisAddSelective: () => {},
-
-  isEditSelected: false,
-  setisEditSelected: () => {},
+  setIsCollapsed: () => {},
+  currentTabSelected: false,
+  setCurrentTabSelected: () => {},
+  menu: [],
+  handleAddProduct: () => {},
+  onDelete: () => {},
+  restMenu: () => {},
+  newProduct: [],
+  setNewProduct: () => {},
 });
 
 export default OrderContext;

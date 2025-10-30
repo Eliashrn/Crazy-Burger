@@ -2,10 +2,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForwardSharp } from "react-icons/io5";
-import Input from "./Reusable-ui/Input";
-import Button from "./Reusable-ui/Button";
+import Input from "./Input";
+import Button from "./Button";
 import { useNavigate } from "react-router";
-import { theme } from "../theme";
+import { theme } from "../../theme";
 
 export function Form() {
   const [inputAss, setInputValue] = useState("");
@@ -29,11 +29,13 @@ export function Form() {
           value={inputAss}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder={"Entrez votre prénom..."}
-          Icon={<BsPersonCircle className="icon" />}
+          Icon={<BsPersonCircle />}
+          className="input-login"
+          version="normal"
         />
 
         <Button
-          Icon={<IoChevronForwardSharp className="icon-button" />}
+          Icon={<IoChevronForwardSharp />}
           label={"Accéder à votre espace"}
         />
       </div>
@@ -69,11 +71,7 @@ const StyledForm = styled.form`
     font-size: ${theme.fonts.P4};
   }
 
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: ${theme.fonts.SM};
-    margin-left: 10px;
+  .input-login {
+    margin: 18px 0;
   }
 `;
