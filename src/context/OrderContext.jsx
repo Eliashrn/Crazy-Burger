@@ -3,16 +3,25 @@ import { createContext } from "react";
 const OrderContext = createContext({
   isModeAdmin: false,
   setIsModeAdmin: () => {},
+
   isCollapsed: false,
   setIsCollapsed: () => {},
+
   currentTabSelected: false,
   setCurrentTabSelected: () => {},
+
   menu: [],
+
   handleAddProduct: () => {},
-  onDelete: () => {},
+  handleDelete: () => {},
+
   restMenu: () => {},
-  newProduct: [],
+
+  newProduct: {},
   setNewProduct: () => {},
+
+  idProductSelected: {},
+  setIdProductSelected: () => {},
 });
 
 export default OrderContext;

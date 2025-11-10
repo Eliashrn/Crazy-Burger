@@ -5,14 +5,15 @@ import Main from "../Main/Main";
 import { useState } from "react";
 import OrderContext from "../../context/OrderContext";
 import { fakeMenu } from "../../fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "../Main/Admin/AdminPanel/AddProduct";
+import { EMPTY_PRODUCT } from "../../enums/product";
 
 const OrderPage = () => {
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.SMALL);
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [idProductSelected, setIdProductSelected] = useState(EMPTY_PRODUCT);
 
   // comportements
 
@@ -29,7 +30,7 @@ const OrderPage = () => {
     setMenu(menuUpdated);
   };
 
-  const onDelete = (idDelete) => {
+  const handleDelete = (idDelete) => {
     const menuCpy = [...menu];
 
     const menuUpdated = menuCpy.filter((product) => product.id !== idDelete);
@@ -48,7 +49,9 @@ const OrderPage = () => {
     setCurrentTabSelected,
     menu,
     handleAddProduct,
-    onDelete,
+    handleDelete,
+    idProductSelected,
+    setIdProductSelected,
     restMenu,
   };
 

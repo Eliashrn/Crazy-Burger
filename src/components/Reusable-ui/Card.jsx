@@ -8,15 +8,16 @@ export default function Card({
   imageSource,
   leftDescription,
   hasDelete,
+  onDelete,
   onClick,
 }) {
   return (
-    <CardStyled className="produit">
+    <CardStyled className="produit" onClick={onClick}>
       {hasDelete && (
         <button
           className="delete-button"
           aria-label="delete-button"
-          onClick={onClick}
+          onClick={onDelete}
         >
           <TiDelete className="icon" />
         </button>

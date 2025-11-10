@@ -9,12 +9,7 @@ import Button from "../../../Reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
 import { getInputTextConfig } from "./getInputTextConfig";
-
-export const EMPTY_PRODUCT = {
-  title: "",
-  imageSource: "",
-  price: "",
-};
+import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 export default function AddProduct() {
   //State

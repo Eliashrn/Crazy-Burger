@@ -9,7 +9,15 @@ import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
   useContext(OrderContext);
-  const { menu, isModeAdmin, onDelete, restMenu } = useContext(OrderContext);
+  const { menu, isModeAdmin, handleDelete, restMenu, setIdProductSelected } =
+    useContext(OrderContext);
+
+  const handleClick = (idProductSelected) => {
+    const productSelected = menu.find(
+      (product) => product.id === idProductSelected
+    );
+    setIdProductSelected(productSelected);
+  };
 
   if (menu.length === 0) {
     if (!isModeAdmin) {
@@ -30,7 +38,8 @@ export default function Menu() {
             }
             leftDescription={formatPrice(price)}
             hasDelete={isModeAdmin}
-            onClick={() => onDelete(id)}
+            onDelete={() => handleDelete(id)}
+            onClick={() => handleClick(id)}
           />
         );
       })}
