@@ -17,10 +17,6 @@ const OrderPage = () => {
 
   // comportements
 
-  const restMenu = () => {
-    setMenu(fakeMenu.SMALL);
-  };
-
   const handleAddProduct = (newProduct) => {
     //1. Copie du tableau menu
     const menuCopy = [...menu];
@@ -38,6 +34,21 @@ const OrderPage = () => {
     setMenu(menuUpdated);
   };
 
+  const handleEdith = (productBeingEdited) => {
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+
+    const indexOfProduct = menu.findIndex(
+      (product) => product.id === productBeingEdited.id
+    );
+    menuCopy[indexOfProduct] = productBeingEdited;
+
+    setMenu(menuCopy);
+  };
+
+  const restMenu = () => {
+    setMenu(fakeMenu.SMALL);
+  };
+
   const orderContextValue = {
     newProduct,
     setNewProduct,
@@ -53,6 +64,7 @@ const OrderPage = () => {
     idProductSelected,
     setIdProductSelected,
     restMenu,
+    handleEdith,
   };
 
   return (
