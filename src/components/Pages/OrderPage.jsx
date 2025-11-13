@@ -19,7 +19,7 @@ const OrderPage = () => {
 
   const handleAddProduct = (newProduct) => {
     //1. Copie du tableau menu
-    const menuCopy = [...menu];
+    const menuCopy = JSON.parse(JSON.stringify(menu));
     //2. Manipuler la copie du tableau
     const menuUpdated = [newProduct, ...menuCopy];
     //3. Mettre à jour le state avec la copie modifiée
@@ -27,7 +27,7 @@ const OrderPage = () => {
   };
 
   const handleDelete = (idDelete) => {
-    const menuCpy = [...menu];
+    const menuCpy = JSON.parse(JSON.stringify(menu));
 
     const menuUpdated = menuCpy.filter((product) => product.id !== idDelete);
     // Mettre à jour le state
