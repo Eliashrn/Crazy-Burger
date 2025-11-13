@@ -9,14 +9,24 @@ import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
   useContext(OrderContext);
-  const { menu, isModeAdmin, handleDelete, restMenu, setIdProductSelected } =
-    useContext(OrderContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    restMenu,
+    setIsProductSelected,
+    isProductSelected,
+  } = useContext(OrderContext);
 
   const handleClick = (idProductSelected) => {
     const productClickedOn = menu.find(
       (product) => product.id === idProductSelected
     );
-    setIdProductSelected(productClickedOn);
+    setIsProductSelected(productClickedOn);
+  };
+
+  const checkIfProductIsClicked = (idProductInmenu, isProductClickedon) => {
+    return idProductInmenu === isProductClickedon;
   };
 
   if (menu.length === 0) {
@@ -41,6 +51,7 @@ export default function Menu() {
             onDelete={() => handleDelete(id)}
             onClick={() => handleClick(id)}
             isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, isProductSelected.id)}
           />
         );
       })}

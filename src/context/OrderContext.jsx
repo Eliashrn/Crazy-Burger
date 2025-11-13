@@ -20,8 +20,8 @@ const OrderContext = createContext({
   newProduct: {},
   setNewProduct: () => {},
 
-  idProductSelected: {},
-  setIdProductSelected: () => {},
+  isProductSelected: {},
+  setIsProductSelected: () => {},
 
   handleEdith: () => {},
 });

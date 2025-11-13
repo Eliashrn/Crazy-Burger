@@ -6,15 +6,15 @@ import Input from "../../../Reusable-ui/Input";
 import { getInputTextConfig } from "./getInputTextConfig";
 
 export default function EditProduct() {
-  const { idProductSelected, setIdProductSelected, handleEdith } =
+  const { isProductSelected, setIsProductSelected, handleEdith } =
     useContext(OrderContext);
 
-  const inputTexts = getInputTextConfig(idProductSelected);
+  const inputTexts = getInputTextConfig(isProductSelected);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const productBeingUpdate = { ...idProductSelected, [name]: value };
-    setIdProductSelected(productBeingUpdate);
+    const productBeingUpdate = { ...isProductSelected, [name]: value };
+    setIsProductSelected(productBeingUpdate);
 
     handleEdith(productBeingUpdate);
   };
@@ -22,8 +22,8 @@ export default function EditProduct() {
   return (
     <EditProductStyled>
       <ImagePreview
-        imageSource={idProductSelected.imageSource}
-        title={idProductSelected.title}
+        imageSource={isProductSelected.imageSource}
+        title={isProductSelected.title}
       />
       <div className="input-fields">
         {inputTexts.map((input) => (

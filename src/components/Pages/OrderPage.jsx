@@ -13,7 +13,7 @@ const OrderPage = () => {
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(fakeMenu.LARGE);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const [idProductSelected, setIdProductSelected] = useState(EMPTY_PRODUCT);
+  const [isProductSelected, setIsProductSelected] = useState(EMPTY_PRODUCT);
 
   // comportements
 
@@ -61,8 +61,8 @@ const OrderPage = () => {
     menu,
     handleAddProduct,
     handleDelete,
-    idProductSelected,
-    setIdProductSelected,
+    isProductSelected,
+    setIsProductSelected,
     restMenu,
     handleEdith,
   };
