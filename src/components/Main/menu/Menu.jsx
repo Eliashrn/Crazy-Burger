@@ -13,10 +13,10 @@ export default function Menu() {
     useContext(OrderContext);
 
   const handleClick = (idProductSelected) => {
-    const productSelected = menu.find(
+    const productClickedOn = menu.find(
       (product) => product.id === idProductSelected
     );
-    setIdProductSelected(productSelected);
+    setIdProductSelected(productClickedOn);
   };
 
   if (menu.length === 0) {
@@ -40,6 +40,7 @@ export default function Menu() {
             hasDelete={isModeAdmin}
             onDelete={() => handleDelete(id)}
             onClick={() => handleClick(id)}
+            isHoverable={isModeAdmin}
           />
         );
       })}
