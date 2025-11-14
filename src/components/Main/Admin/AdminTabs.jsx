@@ -2,11 +2,9 @@ import styled from "styled-components";
 import Tabs from "../../Reusable-ui/Tabs";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../../theme";
-import { AiOutlinePlus } from "react-icons/ai";
-import { MdModeEditOutline } from "react-icons/md";
 import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
-import { tabsConfig } from "./AdminPanel/tabsConfig";
+import { getTabsConfig } from "./AdminPanel/tabsConfig";
 
 export default function AdminTabs() {
   const {
@@ -21,7 +19,7 @@ export default function AdminTabs() {
     setCurrentTabSelected(tabSelected); // réactualise l'onglet sélectionné
   };
 
-  const tabs = tabsConfig;
+  const tabs = getTabsConfig();
 
   // affichage
   return (
