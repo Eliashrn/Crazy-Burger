@@ -6,9 +6,12 @@ import Input from "../../../Reusable-ui/Input";
 import { getInputTextConfig } from "./getInputTextConfig";
 
 export default function EditProduct() {
-  const { isProductSelected, setIsProductSelected, handleEdith } =
-    useContext(OrderContext);
-
+  const {
+    isProductSelected,
+    setIsProductSelected,
+    handleEdith,
+    titleEdithBox,
+  } = useContext(OrderContext);
   const inputTexts = getInputTextConfig(isProductSelected);
 
   const handleChange = (e) => {
@@ -32,6 +35,7 @@ export default function EditProduct() {
             {...input}
             onChange={handleChange}
             version="minimalist"
+            ref={input.name === "title" ? titleEdithBox : null}
           />
         ))}
       </div>

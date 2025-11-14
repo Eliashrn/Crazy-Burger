@@ -24,6 +24,8 @@ const OrderContext = createContext({
   setIsProductSelected: () => {},
 
   handleEdith: () => {},
+
+  titleEdithBox: {},
 });
 
 export default OrderContext;

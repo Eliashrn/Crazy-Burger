@@ -2,18 +2,19 @@ import styled from "styled-components";
 import Navbar from "./Navbar";
 import { theme } from "../../theme";
 import Main from "../Main/Main";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import OrderContext from "../../context/OrderContext";
 import { fakeMenu } from "../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../enums/product";
 
 const OrderPage = () => {
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(fakeMenu.LARGE);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isProductSelected, setIsProductSelected] = useState(EMPTY_PRODUCT);
+  const titleEdithBox = useRef();
 
   // comportements
 
@@ -65,6 +66,7 @@ const OrderPage = () => {
     setIsProductSelected,
     restMenu,
     handleEdith,
+    titleEdithBox,
   };
 
   return (
