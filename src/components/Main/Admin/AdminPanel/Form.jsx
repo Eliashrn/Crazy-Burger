@@ -1,38 +1,45 @@
 import styled from "styled-components";
 import Input from "../../../Reusable-ui/Input";
-import Button from "../../../Reusable-ui/Button";
-import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
 import { getInputTextConfig } from "./getInputTextConfig";
+import React from "react";
+import ImagePreview from "./ImagePreview";
+import Button from "../../../Reusable-ui/Button.jsx";
+import SubmitMessage from "./SubmitMessage.jsx";
 
-export default function Form({ product, onSubmit, onChange, successSubmit }) {
-  //State
+const Form = React.forwardRef(
+  ({ product, onSubmit, onChange, successSubmit }, ref) => {
+    const inputTexts = getInputTextConfig(product);
 
-  //Comportements
+    //Render
 
-  const inputTexts = getInputTextConfig(product, onChange);
+    return (
+      <FormStyled onSubmit={onSubmit}>
+        <ImagePreview imageSource={product.imageSource} title={product.title} />
+        <div className="input-fields">
+          {inputTexts.map((input) => (
+            <Input
+              key={input.id}
+              {...input}
+              onChange={onChange}
+              version="minimalist"
+              ref={ref && input.name === "title" ? ref : null}
+            />
+          ))}
+        </div>
+        <div className="submit">
+          <Button
+            className="submit-button"
+            label={"Ajouter un noueau produit"}
+            version="success"
+          />{" "}
+          {successSubmit && <SubmitMessage />}
+        </div>
+      </FormStyled>
+    );
+  }
+);
 
-  //Render
-
-  return (
-    <FormStyled onSubmit={onSubmit}>
-      <ImagePreview imageSource={product.imageSource} title={product.title} />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <Input key={input.id} {...input} version="minimalist" />
-        ))}
-      </div>
-      <div className="submit">
-        <Button
-          className="submit-button"
-          label={"Ajouter un noueau produit"}
-          version="success"
-        />{" "}
-        {successSubmit && <SubmitMessage />}
-      </div>
-    </FormStyled>
-  );
-}
+export default Form;
 
 const FormStyled = styled.form`
   display: grid;

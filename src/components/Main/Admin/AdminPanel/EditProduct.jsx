@@ -3,8 +3,8 @@ import OrderContext from "../../../../context/OrderContext";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import Input from "../../../Reusable-ui/Input";
-import { getInputTextConfig } from "./getInputTextConfig";
 import EditInfoMessage from "./EditInfoMessage";
+import Form from "./Form";
 
 export default function EditProduct() {
   const {
@@ -13,7 +13,6 @@ export default function EditProduct() {
     handleEdith,
     titleEdithBox,
   } = useContext(OrderContext);
-  const inputTexts = getInputTextConfig(isProductSelected);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,26 +23,32 @@ export default function EditProduct() {
   };
 
   return (
-    <EditProductStyled>
-      <ImagePreview
-        imageSource={isProductSelected.imageSource}
-        title={isProductSelected.title}
-      />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <Input
-            key={input.id}
-            {...input}
-            onChange={handleChange}
-            version="minimalist"
-            ref={input.name === "title" ? titleEdithBox : null}
-          />
-        ))}
-      </div>
-      <div className="submit">
-        <EditInfoMessage />
-      </div>
-    </EditProductStyled>
+    // <EditProductStyled>
+    //   <ImagePreview
+    //     imageSource={isProductSelected.imageSource}
+    //     title={isProductSelected.title}
+    //   />
+    //   <div className="input-fields">
+    //     {inputTexts.map((input) => (
+    //       <Input
+    //         key={input.id}
+    //         {...input}
+    //         onChange={handleChange}
+    //         version="minimalist"
+    //         ref={input.name === "title" ? titleEdithBox : null}
+    //       />
+    //     ))}
+    //   </div>
+    //   <div className="submit">
+    //     <EditInfoMessage />
+    //   </div>
+    // </EditProductStyled>
+
+    <Form
+      product={isProductSelected}
+      onChange={handleChange}
+      ref={titleEdithBox}
+    />
   );
 }
 

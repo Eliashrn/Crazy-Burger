@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 
-import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
 
 import { EMPTY_PRODUCT } from "../../../../enums/product";
