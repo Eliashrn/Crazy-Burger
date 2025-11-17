@@ -4,6 +4,7 @@ import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import Input from "../../../Reusable-ui/Input";
 import { getInputTextConfig } from "./getInputTextConfig";
+import { theme } from "../../../../theme";
 
 export default function EditProduct() {
   const {
@@ -39,6 +40,12 @@ export default function EditProduct() {
           />
         ))}
       </div>
+      <div className="submit">
+        <span className="sentence">
+        Cliquer sur un produit du menu pour le modifier {""}
+        <span className="live-update">en temps réel</span>
+        </span>
+        </div>
     </EditProductStyled>
   );
 }
@@ -63,5 +70,13 @@ const EditProductStyled = styled.form`
     display: flex;
     position: relative;
     align-items: center;
+  }
+
+  .sentence {
+    color: ${theme.colors.primary};
+    font-size: ${theme.fonts.size.SM};
+    .live-update {
+      text-decoration: underline;
+    }
   }
 `;

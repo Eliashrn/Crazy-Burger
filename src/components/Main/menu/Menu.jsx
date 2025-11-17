@@ -6,6 +6,7 @@ import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import {EMPTY_PRODUCT} from "../../../enums/product.jsx"
 
 export default function Menu() {
   useContext(OrderContext);
@@ -26,11 +27,9 @@ export default function Menu() {
 
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
-    await titleEdithBox.current.focus();
-    const productClickedOn = menu.find(
-      (product) => product.id === idProductSelected
-    );
-    setIsProductSelected(productClickedOn);
+    const productClickedOn = menu.find((product) => product.id === idProductSelected);
+    await setIsProductSelected(productClickedOn);
+    titleEdithBox.current.focus();
   };
 
   const checkIfProductIsClicked = (idProductInmenu, isProductClickedon) => {
@@ -44,9 +43,10 @@ export default function Menu() {
     return <EmptyMenuAdmin restMenu={restMenu} />;
   }
 
-  const handleCardDelete = (e, id) => {
+  const handleCardDelete = (e, idPrductToDelete) => {
     e.stopPropagation();
-    handleDelete(id);
+    handleDelete(idPrductToDelete);
+    idPrductToDelete === isProductSelected.idPrductToDelete && setIsProductSelected(EMPTY_PRODUCT)
   };
 
   return (
