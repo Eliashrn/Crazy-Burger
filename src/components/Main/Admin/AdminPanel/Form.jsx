@@ -5,7 +5,7 @@ import React from "react";
 import ImagePreview from "./ImagePreview";
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, children }, ref) => {
+  ({ product, onSubmit, onChange, button }, ref) => {
     const inputTexts = getInputTextConfig(product);
 
     //Render
@@ -24,7 +24,7 @@ const Form = React.forwardRef(
             />
           ))}
         </div>
-        <div className="submit"> {children} </div>
+        <div className="submit"> {button} </div>
       </FormStyled>
     );
   }

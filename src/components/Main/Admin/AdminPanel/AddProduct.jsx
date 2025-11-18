@@ -50,7 +50,7 @@ export default function AddProduct() {
       onSubmit={handleSubmit}
       onChange={handleChange}
       successSubmit={successSubmit}
-      QuelqueChose={
+      button={
         <>
           <Button
             className="submit-button"

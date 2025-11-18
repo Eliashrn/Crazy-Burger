@@ -23,32 +23,11 @@ export default function EditProduct() {
   };
 
   return (
-    // <EditProductStyled>
-    //   <ImagePreview
-    //     imageSource={isProductSelected.imageSource}
-    //     title={isProductSelected.title}
-    //   />
-    //   <div className="input-fields">
-    //     {inputTexts.map((input) => (
-    //       <Input
-    //         key={input.id}
-    //         {...input}
-    //         onChange={handleChange}
-    //         version="minimalist"
-    //         ref={input.name === "title" ? titleEdithBox : null}
-    //       />
-    //     ))}
-    //   </div>
-    //   <div className="submit">
-    //     <EditInfoMessage />
-    //   </div>
-    // </EditProductStyled>
-
     <Form
       product={isProductSelected}
       onChange={handleChange}
       ref={titleEdithBox}
-      QuelqueChose={<EditInfoMessage />}
+      button={<EditInfoMessage />}
     />
   );
 }
