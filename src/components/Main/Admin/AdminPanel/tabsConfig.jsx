@@ -3,6 +3,7 @@ import { MdModeEditOutline } from "react-icons/md";
 import AddProduct from "./AddProduct";
 import EditProduct from "./EditProduct";
 import HintMessage from "./HintMessage";
+import { IoMdSettings } from "react-icons/io";
 
 export const getTabsConfig = (hasAlreadyBeenClicked) => [
   {
@@ -15,9 +16,20 @@ export const getTabsConfig = (hasAlreadyBeenClicked) => [
     index: "edit",
     label: "Modifier un produit",
     Icon: <MdModeEditOutline />,
-    Content:  hasAlreadyBeenClicked ? <EditProduct /> : <HintMessage/>
+    Content: hasAlreadyBeenClicked ? <EditProduct /> : <HintMessage />,
+  },
+
+  {
+    index: "manger",
+    label: "Autre onglet",
+    Icon: <IoMdSettings />,
+    Content: Uncomposant(),
   },
 ];
 
 export const getTabSelected = (tabs, currentTabSelected) =>
   tabs.find((tab) => tab.index === currentTabSelected);
+
+export function Uncomposant() {
+  return <div>Du contenu</div>;
+}
