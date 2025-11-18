@@ -6,10 +6,35 @@ import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import {EMPTY_PRODUCT} from "../../../enums/product.jsx"
 
 export default function Menu() {
   useContext(OrderContext);
-  const { menu, isModeAdmin, onDelete, restMenu } = useContext(OrderContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    restMenu,
+    setIsProductSelected,
+    isProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEdithBox,
+  } = useContext(OrderContext);
+
+  const handleClick = async (idProductSelected) => {
+    if (!isModeAdmin) return;
+
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    const productClickedOn = menu.find((product) => product.id === idProductSelected);
+    await setIsProductSelected(productClickedOn);
+    titleEdithBox.current.focus();
+  };
+
+  const checkIfProductIsClicked = (idProductInmenu, isProductClickedon) => {
+    return idProductInmenu === isProductClickedon;
+  };
 
   if (menu.length === 0) {
     if (!isModeAdmin) {
@@ -17,6 +42,12 @@ export default function Menu() {
     }
     return <EmptyMenuAdmin restMenu={restMenu} />;
   }
+
+  const handleCardDelete = (e, idPrductToDelete) => {
+    e.stopPropagation();
+    handleDelete(idPrductToDelete);
+    idPrductToDelete === isProductSelected.idPrductToDelete && setIsProductSelected(EMPTY_PRODUCT)
+  };
 
   return (
     <MenuStyled className="menu">
@@ -30,7 +61,10 @@ export default function Menu() {
             }
             leftDescription={formatPrice(price)}
             hasDelete={isModeAdmin}
-            onClick={() => onDelete(id)}
+            onDelete={(e) => handleCardDelete(e, id)}
+            onClick={() => handleClick(id)}
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, isProductSelected.id)}
           />
         );
       })}

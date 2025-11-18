@@ -1,20 +1,11 @@
 import React, { useContext, useState } from "react";
-import { PiHamburgerFill } from "react-icons/pi";
-import { MdPhotoCamera } from "react-icons/md";
-import { LuEuro } from "react-icons/lu";
-import styled from "styled-components";
-import OrderContext from "../../../../context/OrderContext";
-import Input from "../../../Reusable-ui/Input";
-import Button from "../../../Reusable-ui/Button";
-import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
-import { getInputTextConfig } from "./getInputTextConfig";
 
-export const EMPTY_PRODUCT = {
-  title: "",
-  imageSource: "",
-  price: "",
-};
+import OrderContext from "../../../../context/OrderContext";
+
+import { EMPTY_PRODUCT } from "../../../../enums/product";
+import Form from "./Form";
+import SubmitMessage from "./SubmitMessage";
+import Button from "../../../Reusable-ui/Button";
 
 export default function AddProduct() {
   //State
@@ -35,9 +26,13 @@ export default function AddProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    succesSubmit();
+    const newProductToAdd = {
+      id: crypto.randomUUID(),
+      ...newProduct,
+    };
     handleAddProduct(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
-    succesSubmit();
   };
 
   const succesSubmit = () => {
@@ -47,57 +42,24 @@ export default function AddProduct() {
     }, 2000);
   };
 
-  const newProductToAdd = {
-    id: crypto.randomUUID(),
-    ...newProduct,
-  };
-
   //Render
 
-  const inputTexts = getInputTextConfig(newProduct, handleChange);
-
   return (
-    <FormStyled onSubmit={handleSubmit}>
-      <ImagePreview
-        imageSource={newProduct.imageSource}
-        title={newProduct.title}
-      />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <Input key={input.id} {...input} version="minimalist" />
-        ))}
-      </div>
-      <div className="submit">
-        <Button
-          className="submit-button"
-          label={"Ajouter un noueau produit"}
-          version="success"
-        />{" "}
-        {successSubmit && <SubmitMessage />}
-      </div>
-    </FormStyled>
+    <Form
+      product={newProduct}
+      onSubmit={handleSubmit}
+      onChange={handleChange}
+      successSubmit={successSubmit}
+      button={
+        <>
+          <Button
+            className="submit-button"
+            label={"Ajouter un noueau produit"}
+            version="success"
+          />{" "}
+          {successSubmit && <SubmitMessage />}
+        </>
+      }
+    />
   );
 }
-
-const FormStyled = styled.form`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(4, 1fr);
-  height: 100%;
-  width: 70%;
-  grid-column-gap: 20px;
-  grid-row-gap: 8px;
-
-  .input-fields {
-    grid-area: 1 / 2 / -2 / 3;
-    display: grid;
-    grid-row-gap: 8px;
-  }
-
-  .submit {
-    grid-area: 4 / -2 / -1 / -1;
-    display: flex;
-    position: relative;
-    align-items: center;
-  }
-`;

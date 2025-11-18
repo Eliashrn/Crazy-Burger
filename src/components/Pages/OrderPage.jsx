@@ -2,39 +2,52 @@ import styled from "styled-components";
 import Navbar from "./Navbar";
 import { theme } from "../../theme";
 import Main from "../Main/Main";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import OrderContext from "../../context/OrderContext";
 import { fakeMenu } from "../../fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "../Main/Admin/AdminPanel/AddProduct";
+import { EMPTY_PRODUCT } from "../../enums/product";
 
 const OrderPage = () => {
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.SMALL);
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [isProductSelected, setIsProductSelected] = useState(EMPTY_PRODUCT);
+  const titleEdithBox = useRef();
 
   // comportements
 
-  const restMenu = () => {
-    setMenu(fakeMenu.SMALL);
-  };
-
   const handleAddProduct = (newProduct) => {
     //1. Copie du tableau menu
-    const menuCopy = [...menu];
+    const menuCopy = JSON.parse(JSON.stringify(menu));
     //2. Manipuler la copie du tableau
     const menuUpdated = [newProduct, ...menuCopy];
     //3. Mettre à jour le state avec la copie modifiée
     setMenu(menuUpdated);
   };
 
-  const onDelete = (idDelete) => {
-    const menuCpy = [...menu];
+  const handleDelete = (idDelete) => {
+    const menuCpy = JSON.parse(JSON.stringify(menu));
 
     const menuUpdated = menuCpy.filter((product) => product.id !== idDelete);
     // Mettre à jour le state
     setMenu(menuUpdated);
+  };
+
+  const handleEdith = (productBeingEdited) => {
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+
+    const indexOfProduct = menu.findIndex(
+      (product) => product.id === productBeingEdited.id
+    );
+    menuCopy[indexOfProduct] = productBeingEdited;
+
+    setMenu(menuCopy);
+  };
+
+  const restMenu = () => {
+    setMenu(fakeMenu.SMALL);
   };
 
   const orderContextValue = {
@@ -48,8 +61,12 @@ const OrderPage = () => {
     setCurrentTabSelected,
     menu,
     handleAddProduct,
-    onDelete,
+    handleDelete,
+    isProductSelected,
+    setIsProductSelected,
     restMenu,
+    handleEdith,
+    titleEdithBox,
   };
 
   return (
