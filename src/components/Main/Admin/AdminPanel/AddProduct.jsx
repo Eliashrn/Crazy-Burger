@@ -4,6 +4,8 @@ import OrderContext from "../../../../context/OrderContext";
 
 import { EMPTY_PRODUCT } from "../../../../enums/product";
 import Form from "./Form";
+import SubmitMessage from "./SubmitMessage";
+import Button from "../../../Reusable-ui/Button";
 
 export default function AddProduct() {
   //State
@@ -48,6 +50,16 @@ export default function AddProduct() {
       onSubmit={handleSubmit}
       onChange={handleChange}
       successSubmit={successSubmit}
+      QuelqueChose={
+        <>
+          <Button
+            className="submit-button"
+            label={"Ajouter un noueau produit"}
+            version="success"
+          />{" "}
+          {successSubmit && <SubmitMessage />}
+        </>
+      }
     />
   );
 }

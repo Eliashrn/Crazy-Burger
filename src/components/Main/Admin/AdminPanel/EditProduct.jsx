@@ -48,6 +48,7 @@ export default function EditProduct() {
       product={isProductSelected}
       onChange={handleChange}
       ref={titleEdithBox}
+      QuelqueChose={<EditInfoMessage />}
     />
   );
 }

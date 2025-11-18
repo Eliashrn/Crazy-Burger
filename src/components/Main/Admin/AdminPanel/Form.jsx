@@ -3,11 +3,9 @@ import Input from "../../../Reusable-ui/Input";
 import { getInputTextConfig } from "./getInputTextConfig";
 import React from "react";
 import ImagePreview from "./ImagePreview";
-import Button from "../../../Reusable-ui/Button.jsx";
-import SubmitMessage from "./SubmitMessage.jsx";
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, successSubmit }, ref) => {
+  ({ product, onSubmit, onChange, QuelqueChose }, ref) => {
     const inputTexts = getInputTextConfig(product);
 
     //Render
@@ -26,14 +24,7 @@ const Form = React.forwardRef(
             />
           ))}
         </div>
-        <div className="submit">
-          <Button
-            className="submit-button"
-            label={"Ajouter un noueau produit"}
-            version="success"
-          />{" "}
-          {successSubmit && <SubmitMessage />}
-        </div>
+        <div className="submit"> {QuelqueChose} </div>
       </FormStyled>
     );
   }
