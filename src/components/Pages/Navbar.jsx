@@ -3,7 +3,7 @@ import Logo from "../Reusable-ui/Logo";
 import styled from "styled-components";
 import Profile from "./Profile";
 import { theme } from "../../theme";
-import ToggleButton from "../Reusable-ui/ToggleButton.jsX";
+import ToggleButton from "../Reusable-ui/ToggleButton";
 import { ToastContainer, toast } from "react-toastify";
 import { useContext } from "react";
 import { FaUserSecret } from "react-icons/fa";
