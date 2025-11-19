@@ -5,6 +5,7 @@ import Header from "./Header";
 import Total from "./Total";
 import { formatPrice } from "../../../../utils/maths";
 import Footer from "./Footer";
+import Basketbody from "./Basketbody";
 
 export default function Basket() {
   return (
@@ -12,7 +13,8 @@ export default function Basket() {
       <Header>
         <Total amoundTopay={formatPrice(0)} />
       </Header>
-      <div className="body">body</div>
+      {/* <div className="body">body</div> */}
+      <Basketbody />
       <Footer />
     </BasketStyled>
   );
@@ -23,16 +25,4 @@ const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
-
-  .body {
-    flex: 1;
-    background: ${theme.colors.background_white};
-    box-shadow: ${theme.shadows.basket};
-  }
-
-  .footer {
-    height: 70px;
-    background: ${theme.colors.background_dark};
-    border-bottom-left-radius: ${theme.borderRadius.extraRound};
-  }
 `;
