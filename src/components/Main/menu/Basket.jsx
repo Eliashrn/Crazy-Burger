@@ -16,6 +16,7 @@ const BasketStyled = styled.div`
   background: pink;
   display: flex;
   flex-direction: column;
+  border-bottom-left-radius: ${theme.borderRadius.extraRound};
 
   .head {
     height: 70px;
@@ -24,10 +25,12 @@ const BasketStyled = styled.div`
 
   .body {
     flex: 1;
+    background: ${theme.colors.background_white};
   }
 
   .footer {
     height: 70px;
     background: ${theme.colors.background_dark};
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
   }
 `;
