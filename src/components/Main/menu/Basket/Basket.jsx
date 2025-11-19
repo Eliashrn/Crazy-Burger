@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { theme } from "../../../theme";
+import { theme } from "../../../../theme";
+import Header from "./Header";
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <div className="head">head</div>
+      <Header>head</Header>
       <div className="body">body</div>
-      <div className="footer">footer</div>
+      <Header>footer</Header>
     </BasketStyled>
   );
 }
@@ -17,11 +18,6 @@ const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
-
-  .head {
-    height: 70px;
-    background: ${theme.colors.background_dark};
-  }
 
   .body {
     flex: 1;
