@@ -31,6 +31,7 @@ const ProfileStyled = styled.div`
   justify-content: space-between;
   min-width: 100px;
   padding-left: 50px;
+  font-family: sans-serif;
 
   .info {
     text-align: right;

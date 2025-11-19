@@ -142,8 +142,9 @@ const CardStyled = styled.div`
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          font-weight: ${theme.fonts.weights.medium};
+          font-weight: ${theme.fonts.weights.bold};
           color: ${theme.colors.primary};
+          font-family: sans-serif;
         }
 
         .right-description {
@@ -156,6 +157,8 @@ const CardStyled = styled.div`
             font-size: ${theme.fonts.size.XS};
             cursor: pointer;
             padding: 12px;
+            font-weight: ${theme.fonts.weights.bold};
+            font-family: sans-serif;
           }
         }
       }

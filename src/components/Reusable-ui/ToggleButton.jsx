@@ -28,6 +28,7 @@ export default function ToggleButton({
 
 const ToggleButtonStyled = styled.div`
   /* border: 1px solid red; */
+  font-family: sans-serif;
 
   display: flex;
   margin-right: 10px;

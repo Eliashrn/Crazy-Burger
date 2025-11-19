@@ -2,11 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Header from "./Header";
+import Total from "./Total";
+import { formatPrice } from "../../../../utils/maths";
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <Header>head</Header>
+      <Header>
+        <Total amoundTopay={formatPrice(0)} />
+      </Header>
       <div className="body">body</div>
       <Header>footer</Header>
     </BasketStyled>
