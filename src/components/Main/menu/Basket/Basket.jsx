@@ -4,6 +4,7 @@ import { theme } from "../../../../theme";
 import Header from "./Header";
 import Total from "./Total";
 import { formatPrice } from "../../../../utils/maths";
+import Footer from "./Footer";
 
 export default function Basket() {
   return (
@@ -12,7 +13,7 @@ export default function Basket() {
         <Total amoundTopay={formatPrice(0)} />
       </Header>
       <div className="body">body</div>
-      <Header>footer</Header>
+      <Footer />
     </BasketStyled>
   );
 }
