@@ -6,7 +6,7 @@ import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
-import {EMPTY_PRODUCT} from "../../../enums/product.jsx"
+import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 
 export default function Menu() {
   useContext(OrderContext);
@@ -27,7 +27,9 @@ export default function Menu() {
 
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
-    const productClickedOn = menu.find((product) => product.id === idProductSelected);
+    const productClickedOn = menu.find(
+      (product) => product.id === idProductSelected
+    );
     await setIsProductSelected(productClickedOn);
     titleEdithBox.current.focus();
   };
@@ -46,7 +48,8 @@ export default function Menu() {
   const handleCardDelete = (e, idPrductToDelete) => {
     e.stopPropagation();
     handleDelete(idPrductToDelete);
-    idPrductToDelete === isProductSelected.idPrductToDelete && setIsProductSelected(EMPTY_PRODUCT)
+    idPrductToDelete === isProductSelected.idPrductToDelete &&
+      setIsProductSelected(EMPTY_PRODUCT);
   };
 
   return (
@@ -63,8 +66,8 @@ export default function Menu() {
             hasDelete={isModeAdmin}
             onDelete={(e) => handleCardDelete(e, id)}
             onClick={() => handleClick(id)}
-            isHoverable={isModeAdmin}
-            isSelected={checkIfProductIsClicked(id, isProductSelected.id)}
+            ishoverable={isModeAdmin}
+            isselected={checkIfProductIsClicked(id, isProductSelected.id)}
           />
         );
       })}
@@ -75,8 +78,8 @@ export default function Menu() {
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(300px 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(300px 1fr)); */
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
