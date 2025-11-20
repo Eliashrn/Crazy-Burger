@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
-
+import React, { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
-
+import { useSuccesSubmit } from "../../../../hooks/useSuccesSubmit";
 import { EMPTY_PRODUCT } from "../../../../enums/product";
 import Form from "./Form";
 import SubmitMessage from "./SubmitMessage";
@@ -11,8 +10,9 @@ export default function AddProduct() {
   //State
   const { handleAddProduct, newProduct, setNewProduct } =
     useContext(OrderContext);
+  const { successSubmit, succesSubmit } = useSuccesSubmit();
 
-  const [successSubmit, setSuccessSubmit] = useState(false);
+  // const [successSubmit, setSuccessSubmit] = useState(false);
 
   //Comportements
 
@@ -33,13 +33,6 @@ export default function AddProduct() {
     };
     handleAddProduct(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
-  };
-
-  const succesSubmit = () => {
-    setSuccessSubmit(true);
-    setTimeout(() => {
-      setSuccessSubmit(false);
-    }, 2000);
   };
 
   //Render
