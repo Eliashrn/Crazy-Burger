@@ -32,5 +32,6 @@ const SubmitMessageStyled = styled.div`
     margin-left: 5px;
     font-size: ${theme.fonts.size.SM};
     color: ${theme.colors.success};
+    font-family: "Open Sans", sans-serif;
   }
 `;
