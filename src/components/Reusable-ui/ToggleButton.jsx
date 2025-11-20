@@ -28,8 +28,7 @@ export default function ToggleButton({
 
 const ToggleButtonStyled = styled.div`
   /* border: 1px solid red; */
-  font-family: sans-serif;
-
+  font-family: "Open Sans", sans-serif;
   display: flex;
   margin-right: 10px;
   input[type="checkbox"] {

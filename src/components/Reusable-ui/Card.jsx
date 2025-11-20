@@ -10,15 +10,15 @@ export default function Card({
   hasDelete,
   onDelete,
   onClick,
-  isHoverable,
-  isSelected,
+  ishoverable,
+  isselected,
 }) {
   return (
     <CardStyled
       className="produit"
       onClick={onClick}
-      isHoverable={isHoverable}
-      isSelected={isSelected}
+      ishoverable={ishoverable}
+      isselected={isselected}
     >
       <div className="card">
         {hasDelete && (
@@ -52,7 +52,7 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${(props) => props.isHoverable && hoverableStyle}
+  ${(props) => props.ishoverable && hoverableStyle}
 
   height: 330px;
 
@@ -144,7 +144,7 @@ const CardStyled = styled.div`
           text-overflow: ellipsis;
           font-weight: ${theme.fonts.weights.bold};
           color: ${theme.colors.primary};
-          font-family: sans-serif;
+          font-family: "Open Sans", sans-serif;
         }
 
         .right-description {
@@ -158,13 +158,13 @@ const CardStyled = styled.div`
             cursor: pointer;
             padding: 12px;
             font-weight: ${theme.fonts.weights.bold};
-            font-family: sans-serif;
+            font-family: "Open Sans", sans-serif;
           }
         }
       }
     }
   }
-  ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
+  ${({ ishoverable, isselected }) => ishoverable && isselected && selectedStyle}
 `;
 
 const hoverableStyle = css`

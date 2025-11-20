@@ -14,8 +14,7 @@ export default function EditInfoMessage() {
 const EditMessageStyled = styled.span`
   color: ${theme.colors.primary};
   font-size: ${theme.fonts.size.SM};
-  font-family: sans-serif;
-
+  font-family: "Open Sans", sans-serif;
   .live-update {
     text-decoration: underline;
   }

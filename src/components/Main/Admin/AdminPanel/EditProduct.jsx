@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import styled from "styled-components";
-import ImagePreview from "./ImagePreview";
-import Input from "../../../Reusable-ui/Input";
 import EditInfoMessage from "./EditInfoMessage";
 import Form from "./Form";
 

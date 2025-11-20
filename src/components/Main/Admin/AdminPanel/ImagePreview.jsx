@@ -37,5 +37,6 @@ const ImagePreviewStyled = styled.div`
     line-height: 1.5;
     color: ${theme.colors.greySemiDark};
     border-radius: ${theme.borderRadius.round};
+    font-family: "Open Sans", sans-serif;
   }
 `;
