@@ -7,24 +7,25 @@ import { formatPrice } from "../../../../utils/maths";
 import Footer from "./Footer";
 import EmptyBasket from "./EmptyBasket";
 import OrderContext from "../../../../context/OrderContext";
+import BasketProduct from "./BasketProduct";
 
 export default function Basket() {
   const { basket } = useContext(OrderContext);
+
+  const isBasketEmpty = basket.length === 0;
 
   return (
     <BasketStyled>
       <Header>
         <Total amoundTopay={formatPrice(0)} />
       </Header>
-      {/* <div className="body">body</div> */}
-      <EmptyBasket basket={basket} />
+      {isBasketEmpty ? <EmptyBasket /> : <BasketProduct />}
       <Footer />
     </BasketStyled>
   );
 }
 
 const BasketStyled = styled.div`
-  background: pink;
   display: flex;
   flex-direction: column;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
