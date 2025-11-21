@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import OrderContext from "../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../enums/product";
 import { useMenuProduct } from "../../hooks/useMenuProduct";
+import { useBasket } from "../../hooks/useBasket";
 
 const OrderPage = () => {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -14,6 +15,7 @@ const OrderPage = () => {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isProductSelected, setIsProductSelected] = useState(EMPTY_PRODUCT);
   const titleEdithBox = useRef();
+  const { basket } = useBasket();
   const {
     menu,
 
@@ -42,6 +44,7 @@ const OrderPage = () => {
     restMenu,
     handleEdith,
     titleEdithBox,
+    basket,
   };
 
   return (

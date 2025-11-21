@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 
-export default function Basketbody() {
+export default function EmptyBasket() {
   return (
-    <BasketbodyStyled>
+    <EmptyBasketStyled>
       <span className="message">Votre commande est vide. </span>
-    </BasketbodyStyled>
+    </EmptyBasketStyled>
   );
 }
 
-const BasketbodyStyled = styled.div`
+const EmptyBasketStyled = styled.div`
   flex: 1;
   background: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.basket};

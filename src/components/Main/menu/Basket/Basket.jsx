@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Header from "./Header";
 import Total from "./Total";
 import { formatPrice } from "../../../../utils/maths";
 import Footer from "./Footer";
-import Basketbody from "./Basketbody";
+import EmptyBasket from "./EmptyBasket";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function Basket() {
+  const { basket } = useContext(OrderContext);
+
   return (
     <BasketStyled>
       <Header>
         <Total amoundTopay={formatPrice(0)} />
       </Header>
       {/* <div className="body">body</div> */}
-      <Basketbody />
+      <EmptyBasket basket={basket} />
       <Footer />
     </BasketStyled>
   );
