@@ -137,7 +137,7 @@ export const LARGE = [
 export const LARGE_WEIRD = [
   {
     id: "1",
-    imageSource: "image/fries3.png",
+    imageSource: "/image/fries3.png",
     title: "New York Fries",
     price: 3.1678,
     quantity: 13,
@@ -146,7 +146,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "2",
-    imageSource: "image/drink1.png",
+    imageSource: "/image/drink1.png",
     title: "Coke 25cl",
     price: 3.568,
     quantity: 1,
@@ -155,7 +155,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "3",
-    imageSource: "image/burger3.png",
+    imageSource: "/image/burger3.png",
     title: "Burger poulet chanmé",
     price: 0.0,
     quantity: 5,
@@ -164,7 +164,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "4",
-    imageSource: "image/burger-vegan.png",
+    imageSource: "/image/burger-vegan.png",
     title: "Vegan Burger",
     price: 5.4985,
     quantity: 1,
@@ -173,7 +173,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "5",
-    imageSource: "image/drink2.png",
+    imageSource: "/image/drink2.png",
     title: "Pepsi 25cl MEGA OUF XXXL",
     price: 3.487,
     quantity: 1,
@@ -182,7 +182,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "6",
-    imageSource: "image/drink3.png",
+    imageSource: "/image/drink3.png",
     title: "",
     price: 3.356,
     quantity: 1,
@@ -191,7 +191,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "7",
-    imageSource: "image/burger-bacon-egg.png",
+    imageSource: "/image/burger-bacon-egg.png",
     title: "Burger Smoke Bdhbedhbeheb",
     price: 5.598,
     quantity: 1,
@@ -200,7 +200,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "8",
-    imageSource: "image/frites1.png",
+    imageSource: "/image/frites1.png",
     title: "Frites Paprika",
     price: 2.567,
     quantity: 1,
@@ -209,7 +209,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "9",
-    imageSource: "image/wedges1.png",
+    imageSource: "/image/wedges1.png",
     title: "Crispy Potatoes",
     price: 3.7,
     quantity: 1,
@@ -218,7 +218,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "10",
-    imageSource: "image/ice-cream.png",
+    imageSource: "/image/ice-cream.png",
     title: "Glaces artisanales",
     price: 4.678,
     quantity: 1,

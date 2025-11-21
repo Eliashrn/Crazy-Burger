@@ -6,7 +6,7 @@ import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
-import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
+import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../enums/product.jsx";
 
 export default function Menu() {
   useContext(OrderContext);
@@ -59,9 +59,7 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={
-              imageSource === "" ? "/image/coming-soon.png" : imageSource
-            }
+            imageSource={imageSource === "" ? IMAGE_BY_DEFAULT : imageSource}
             leftDescription={formatPrice(price)}
             hasDelete={isModeAdmin}
             onDelete={(e) => handleCardDelete(e, id)}
