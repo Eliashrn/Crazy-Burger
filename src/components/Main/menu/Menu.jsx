@@ -20,6 +20,7 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEdithBox,
+    handleAddToBasket,
   } = useContext(OrderContext);
 
   const handleClick = async (idProductSelected) => {
@@ -52,6 +53,12 @@ export default function Menu() {
       setIsProductSelected(EMPTY_PRODUCT);
   };
 
+  const handleAddButton = (e, id) => {
+    e.stopPropagation();
+    const productToAdd = menu.find((product) => product.id === id);
+    handleAddToBasket(productToAdd);
+  };
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -66,6 +73,7 @@ export default function Menu() {
             onClick={() => handleClick(id)}
             ishoverable={isModeAdmin}
             isselected={checkIfProductIsClicked(id, isProductSelected.id)}
+            onAdd={(e) => handleAddButton(e, id)}
           />
         );
       })}

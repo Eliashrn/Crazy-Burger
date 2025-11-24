@@ -15,7 +15,7 @@ const OrderPage = () => {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isProductSelected, setIsProductSelected] = useState(EMPTY_PRODUCT);
   const titleEdithBox = useRef();
-  const { basket } = useBasket();
+  const { basket, handleAddToBasket } = useBasket();
   const {
     menu,
 
@@ -45,6 +45,7 @@ const OrderPage = () => {
     handleEdith,
     titleEdithBox,
     basket,
+    handleAddToBasket,
   };
 
   return (

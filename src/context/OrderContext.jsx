@@ -28,6 +28,8 @@ const OrderContext = createContext({
   titleEdithBox: {},
 
   basket: [],
+
+  handleAddToBasket: () => {},
 });
 
 export default OrderContext;
