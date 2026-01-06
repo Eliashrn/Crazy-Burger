@@ -7,23 +7,24 @@ export const useBasket = () => {
   const handleAddToBasket = (productToAdd) => {
     const basketCopy = JSON.parse(JSON.stringify(basket));
 
-    const isProductAlreadyInBasket = basket.find(
+    const productFoundInBasket = basketCopy.find(
       (product) => product.id === productToAdd.id
     );
 
-    if (!isProductAlreadyInBasket) {
+    if (!productFoundInBasket) {
       const newBasketProduct = { ...productToAdd, quantity: 1 };
 
       const basketUpdated = [newBasketProduct, ...basketCopy];
 
       setBasket(basketUpdated);
-    } else {
-      const indexOfBasketProducToIncrement = basket.findIndex(
-        (basketproduct) => basketproduct.id === productToAdd.id
-      );
-      basketCopy[indexOfBasketProducToIncrement].quantity += 1;
-      setBasket(basketCopy);
+      return;
     }
+    const indexOfBasketProducToIncrement = basket.findIndex(
+      (basketproduct) => basketproduct.id === productToAdd.id
+    );
+    basketCopy[indexOfBasketProducToIncrement].quantity += 1;
+    setBasket(basketCopy);
   };
+
   return { basket, handleAddToBasket };
 };
