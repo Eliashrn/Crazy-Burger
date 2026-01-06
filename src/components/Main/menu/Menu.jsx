@@ -14,6 +14,7 @@ export default function Menu() {
     menu,
     isModeAdmin,
     handleDelete,
+
     restMenu,
     setIsProductSelected,
     isProductSelected,
@@ -51,6 +52,7 @@ export default function Menu() {
     handleDelete(idPrductToDelete);
     idPrductToDelete === isProductSelected.idPrductToDelete &&
       setIsProductSelected(EMPTY_PRODUCT);
+    titleEdithBox.current.focus();
   };
 
   const handleAddButton = (e, id) => {
@@ -71,8 +73,8 @@ export default function Menu() {
             hasDelete={isModeAdmin}
             onDelete={(e) => handleCardDelete(e, id)}
             onClick={() => handleClick(id)}
-            ishoverable={isModeAdmin}
-            isselected={checkIfProductIsClicked(id, isProductSelected.id)}
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, isProductSelected.id)}
             onAdd={(e) => handleAddButton(e, id)}
           />
         );

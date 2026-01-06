@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Tabs from "../../Reusable-ui/Tabs";
+import Tabs from "../../../Reusable-ui/Tabs";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { theme } from "../../../theme";
+import { theme } from "../../../../theme";
 import { useContext } from "react";
-import OrderContext from "../../../context/OrderContext";
-import { getTabsConfig } from "./AdminPanel/tabsConfig";
+import OrderContext from "../../../../context/OrderContext";
+import { getTabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
   const {
@@ -49,7 +49,6 @@ const AdminTabsStyled = styled.div`
     background: ${theme.colors.background_dark};
     border-color: ${theme.colors.background_dark};
     color: ${theme.colors.white};
-    border-bottom: 2px;
   }
 
   button {

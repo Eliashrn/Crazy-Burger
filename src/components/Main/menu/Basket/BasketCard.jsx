@@ -39,7 +39,6 @@ export default function BasketCard({
 
 const BasketCardStyled = styled.div`
   cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
-  /* border: 1px solid red; */
   box-sizing: border-box;
   height: 86px;
   padding: 8px 16px;
@@ -55,7 +54,6 @@ const BasketCardStyled = styled.div`
   .image {
     box-sizing: border-box;
     height: 70px;
-    /* border: 1px solid red; */
     img {
       padding: 5px;
       box-sizing: border-box;
@@ -68,8 +66,7 @@ const BasketCardStyled = styled.div`
   .text-info {
     user-select: none;
     box-sizing: border-box;
-    /* background: green; */
-    /* border: 1px solid green; */
+
     display: grid;
     grid-template-columns: 70% 1fr;
     font-size: ${theme.fonts.size.P0};
@@ -79,28 +76,23 @@ const BasketCardStyled = styled.div`
       display: grid;
       grid-template-rows: 60% 40%;
       margin-left: 21px;
-      /* align-items: center; */
       .title {
         display: flex;
         align-items: center;
-        /* background: yellow; */
         font-family: ${theme.fonts.family.stylish};
         font-size: ${theme.fonts.size.P3};
         line-height: 32px;
         font-weight: ${theme.fonts.weights.bold};
         color: ${theme.colors.dark};
-        /* sans cette div avec "min-width: 0", l'ellipsis ne fonctionne pas dans un span : https://semicolon.dev/tutorial/css/text-overflow-ellipsis-doesnt-work#:~:text=If%20your%20text%2Doverflow%20is,Grid%20or%20on%20a%20Table. */
         min-width: 0;
         span {
           overflow: hidden;
-          /* width: 100%; */
           white-space: nowrap;
           text-overflow: ellipsis;
         }
       }
 
       .price {
-        /* background: blue; */
         font-size: ${theme.fonts.size.SM};
         font-weight: ${theme.fonts.weights.medium};
         font-family: ${theme.fonts.family.openSans};
@@ -119,6 +111,7 @@ const BasketCardStyled = styled.div`
       justify-content: flex-end;
       margin-right: 20px;
       font-size: ${theme.fonts.size.SM};
+      font-family: "Open Sans", sans-serif;
     }
   }
 
@@ -127,10 +120,8 @@ const BasketCardStyled = styled.div`
     z-index: 1;
   }
 
-  /* hover de la card */
   :hover {
     .delete-button {
-      /* border: 1px solid red; */
       border: none;
       box-sizing: border-box;
       position: absolute;
@@ -153,7 +144,6 @@ const BasketCardStyled = styled.div`
         height: ${theme.fonts.size.P3};
       }
 
-      /* behaviour on delete-button hover */
       :hover {
         .icon {
           color: ${theme.colors.dark};

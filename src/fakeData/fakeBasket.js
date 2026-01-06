@@ -1,10 +1,12 @@
+import { EMPTY_PRODUCT } from "../enums/product";
+
 export const EMPTY = [];
 
 export const SMALL = [
   {
     id: "1",
     title: "Burger Meal",
-    imageSource: "image/burger1.png",
+    imageSource: "/image/burger1.png",
     quantity: 1,
   },
 ];
@@ -12,14 +14,14 @@ export const SMALL = [
 export const MEDIUM = [
   {
     id: "1",
-    imageSource: "image/burger1.png",
+    imageSource: "/image/burger1.png",
     title: "Burger Smoke BBQ",
     price: 5,
     quantity: 2,
   },
   {
     id: "2",
-    imageSource: "image/burger6.png",
+    imageSource: "/image/burger6.png",
     title: "Vegan Burger",
     price: 5,
     quantity: 1,
@@ -34,7 +36,7 @@ export const MEDIUM = [
   },
   {
     id: "4",
-    imageSource: "image/drink1.png",
+    imageSource: "/image/drink1.png",
     title: "Cheese Burger",
     price: 5,
     quantity: 4,
@@ -135,6 +137,9 @@ export const LARGE = [
 ];
 
 export const LARGE_WEIRD = [
+  {
+    ...EMPTY_PRODUCT,
+  },
   {
     id: "1",
     imageSource: "/image/fries3.png",

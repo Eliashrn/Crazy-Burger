@@ -6,8 +6,8 @@ export default function BasketProduct({ basket }) {
   return (
     <BasketProductStyled>
       {basket.map((basketProduct) => (
-        <div className="basket-card">
-          <BasketCard key={basketProduct.id} {...basketProduct} />
+        <div className="basket-card" key={basketProduct.id}>
+          <BasketCard {...basketProduct} />
         </div>
       ))}
     </BasketProductStyled>
@@ -21,7 +21,7 @@ const BasketProductStyled = styled.div`
   overflow-y: scroll;
 
   .basket-card {
-    margin: 10px 36px;
+    margin: 10px;
     height: 85px;
     box-sizing: border-box;
     &:first-child {
