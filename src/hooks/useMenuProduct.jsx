@@ -2,7 +2,7 @@ import { useState } from "react";
 import { fakeMenu } from "../fakeData/fakeMenu";
 
 export const useMenuProduct = () => {
-  const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
   const handleAddProduct = (newProduct) => {
     //1. Copie du tableau menu
@@ -33,7 +33,7 @@ export const useMenuProduct = () => {
   };
 
   const restMenu = () => {
-    setMenu(fakeMenu.SMALL);
+    setMenu(fakeMenu.LARGE);
   };
 
   return {

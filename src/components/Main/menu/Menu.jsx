@@ -6,7 +6,7 @@ import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
-import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
+import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../enums/product.jsx";
 
 export default function Menu() {
   useContext(OrderContext);
@@ -20,6 +20,8 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEdithBox,
+    handleAddToBasket,
+    handleDeleteFromBasket,
   } = useContext(OrderContext);
 
   const handleClick = async (idProductSelected) => {
@@ -48,8 +50,16 @@ export default function Menu() {
   const handleCardDelete = (e, idPrductToDelete) => {
     e.stopPropagation();
     handleDelete(idPrductToDelete);
+    handleDeleteFromBasket(idPrductToDelete);
     idPrductToDelete === isProductSelected.idPrductToDelete &&
       setIsProductSelected(EMPTY_PRODUCT);
+    titleEdithBox.current.focus();
+  };
+
+  const handleAddButton = (e, id) => {
+    e.stopPropagation();
+    const productToAdd = menu.find((product) => product.id === id);
+    handleAddToBasket(productToAdd);
   };
 
   return (
@@ -59,15 +69,14 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={
-              imageSource === "" ? "/image/coming-soon.png" : imageSource
-            }
+            imageSource={imageSource === "" ? IMAGE_BY_DEFAULT : imageSource}
             leftDescription={formatPrice(price)}
             hasDelete={isModeAdmin}
             onDelete={(e) => handleCardDelete(e, id)}
             onClick={() => handleClick(id)}
-            ishoverable={isModeAdmin}
-            isselected={checkIfProductIsClicked(id, isProductSelected.id)}
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, isProductSelected.id)}
+            onAdd={(e) => handleAddButton(e, id)}
           />
         );
       })}
