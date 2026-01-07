@@ -1,6 +1,6 @@
 import React from "react";
 import { MdDeleteForever } from "react-icons/md";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../theme";
 import { IMAGE_BY_DEFAULT } from "../../../../enums/product";
@@ -96,7 +96,6 @@ const BasketCardStyled = styled.div`
         font-size: ${theme.fonts.size.SM};
         font-weight: ${theme.fonts.weights.medium};
         font-family: ${theme.fonts.family.openSans};
-        /* color: ${theme.colors.white}; */
         font-family: "Open Sans", sans-serif;
       }
     }
