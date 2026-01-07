@@ -6,6 +6,11 @@ import OrderContext from "../../../../context/OrderContext";
 export default function BasketProduct({ basket }) {
   const { isModeAdmin, handleDeleteFromBasket } = useContext(OrderContext);
 
+  const handleOnDelete = (e, productId) => {
+    e.stopPropagation();
+    handleDeleteFromBasket(productId);
+  };
+
   return (
     <BasketProductStyled>
       {basket.map((basketProduct) => (
@@ -13,7 +18,7 @@ export default function BasketProduct({ basket }) {
           <BasketCard
             {...basketProduct}
             isModeAdmin={isModeAdmin}
-            onDelete={() => handleDeleteFromBasket(basketProduct.id)}
+            onDelete={(e) => handleOnDelete(e, basketProduct.id)}
           />
         </div>
       ))}

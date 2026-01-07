@@ -21,6 +21,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleEdithBox,
     handleAddToBasket,
+    handleDeleteFromBasket,
   } = useContext(OrderContext);
 
   const handleClick = async (idProductSelected) => {
@@ -49,6 +50,7 @@ export default function Menu() {
   const handleCardDelete = (e, idPrductToDelete) => {
     e.stopPropagation();
     handleDelete(idPrductToDelete);
+    handleDeleteFromBasket(idPrductToDelete);
     idPrductToDelete === isProductSelected.idPrductToDelete &&
       setIsProductSelected(EMPTY_PRODUCT);
     titleEdithBox.current.focus();

@@ -31,6 +31,7 @@ export const useBasket = () => {
     const basketUpdated = basketCopy.filter(
       (product) => product.id !== productIdToDelete
     );
+
     setBasket(basketUpdated);
   };
 
