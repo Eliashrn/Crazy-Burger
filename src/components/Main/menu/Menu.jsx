@@ -14,7 +14,6 @@ export default function Menu() {
     menu,
     isModeAdmin,
     handleDelete,
-
     restMenu,
     setIsProductSelected,
     isProductSelected,

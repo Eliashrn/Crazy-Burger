@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function BasketProduct({ basket }) {
+  const { isModeAdmin, handleDeleteFromBasket } = useContext(OrderContext);
+
   return (
     <BasketProductStyled>
       {basket.map((basketProduct) => (
         <div className="basket-card" key={basketProduct.id}>
-          <BasketCard {...basketProduct} />
+          <BasketCard
+            {...basketProduct}
+            isModeAdmin={isModeAdmin}
+            onDelete={() => handleDeleteFromBasket(basketProduct.id)}
+          />
         </div>
       ))}
     </BasketProductStyled>

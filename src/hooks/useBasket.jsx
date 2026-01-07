@@ -26,5 +26,13 @@ export const useBasket = () => {
     setBasket(basketCopy);
   };
 
-  return { basket, handleAddToBasket };
+  const handleDeleteFromBasket = (productIdToDelete) => {
+    const basketCopy = JSON.parse(JSON.stringify(basket));
+    const basketUpdated = basketCopy.filter(
+      (product) => product.id !== productIdToDelete
+    );
+    setBasket(basketUpdated);
+  };
+
+  return { basket, handleAddToBasket, handleDeleteFromBasket };
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { MdDeleteForever } from "react-icons/md";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../theme";
 import { IMAGE_BY_DEFAULT } from "../../../../enums/product";
@@ -103,8 +103,6 @@ const BasketCardStyled = styled.div`
 
     .quantity {
       box-sizing: border-box;
-      /* border: 1px solid lightblue; */
-      /* background: lightblue; */
       font-weight: ${theme.fonts.weights.medium};
       display: flex;
       align-items: center;
@@ -120,7 +118,7 @@ const BasketCardStyled = styled.div`
     z-index: 1;
   }
 
-  :hover {
+  &:hover {
     .delete-button {
       border: none;
       box-sizing: border-box;
@@ -144,11 +142,11 @@ const BasketCardStyled = styled.div`
         height: ${theme.fonts.size.P3};
       }
 
-      :hover {
+      &:hover {
         .icon {
           color: ${theme.colors.dark};
         }
-        :active {
+        &:active {
           .icon {
             color: ${theme.colors.white};
           }
