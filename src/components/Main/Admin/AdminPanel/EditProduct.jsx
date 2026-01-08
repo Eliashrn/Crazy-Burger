@@ -10,14 +10,16 @@ export default function EditProduct() {
     setIsProductSelected,
     handleEdith,
     titleEdithBox,
+    handleEdithBasket,
   } = useContext(OrderContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     const productBeingUpdate = { ...isProductSelected, [name]: value };
-    setIsProductSelected(productBeingUpdate);
 
+    setIsProductSelected(productBeingUpdate);
     handleEdith(productBeingUpdate);
+    handleEdithBasket(productBeingUpdate);
   };
 
   return (

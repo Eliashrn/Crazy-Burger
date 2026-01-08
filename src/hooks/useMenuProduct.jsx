@@ -17,7 +17,6 @@ export const useMenuProduct = () => {
     const menuCpy = JSON.parse(JSON.stringify(menu));
 
     const menuUpdated = menuCpy.filter((product) => product.id !== idDelete);
-    // Mettre à jour le state
     setMenu(menuUpdated);
   };
 

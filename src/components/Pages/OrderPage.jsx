@@ -14,9 +14,15 @@ const OrderPage = () => {
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isProductSelected, setIsProductSelected] = useState(EMPTY_PRODUCT);
+
   const titleEdithBox = useRef();
-  const { basket, setBasket, handleAddToBasket, handleDeleteFromBasket } =
-    useBasket();
+  const {
+    basket,
+    setBasket,
+    handleAddToBasket,
+    handleDeleteFromBasket,
+    handleEdithBasket,
+  } = useBasket();
   const {
     menu,
 
@@ -49,6 +55,7 @@ const OrderPage = () => {
     setBasket,
     handleAddToBasket,
     handleDeleteFromBasket,
+    handleEdithBasket,
   };
 
   return (
