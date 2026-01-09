@@ -2,7 +2,7 @@ import { useState } from "react";
 import { fakeBasket } from "../fakeData/fakeBasket";
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.EMPTY);
+  const [basket, setBasket] = useState(fakeBasket.MEDIUM);
 
   const handleAddToBasket = (productToAdd) => {
     const basketCopy = JSON.parse(JSON.stringify(basket));
@@ -35,5 +35,21 @@ export const useBasket = () => {
     setBasket(basketUpdated);
   };
 
-  return { basket, handleAddToBasket, handleDeleteFromBasket };
+  const handleEdithBasket = (productBeingEdited) => {
+    const basketCopy = JSON.parse(JSON.stringify(basket));
+
+    const indexOfProduct = basketCopy.findIndex(
+      (product) => product.id === productBeingEdited.id
+    );
+    basketCopy[indexOfProduct] = productBeingEdited;
+
+    setBasket(basketCopy);
+  };
+
+  return {
+    basket,
+    handleAddToBasket,
+    handleDeleteFromBasket,
+    handleEdithBasket,
+  };
 };

@@ -4,11 +4,31 @@ import BasketCard from "./BasketCard";
 import OrderContext from "../../../../context/OrderContext";
 
 export default function BasketProduct({ basket }) {
-  const { isModeAdmin, handleDeleteFromBasket } = useContext(OrderContext);
+  const {
+    isModeAdmin,
+    handleDeleteFromBasket,
+    isProductSelected,
+    setIsProductSelected,
+    setCurrentTabSelected,
+    setIsCollapsed,
+  } = useContext(OrderContext);
 
   const handleOnDelete = (e, productId) => {
     e.stopPropagation();
     handleDeleteFromBasket(productId);
+    setCurrentTabSelected("edit");
+  };
+
+  const handleClick = (idProductSelected) => {
+    if (!isModeAdmin) return;
+
+    setIsCollapsed(false);
+
+    setCurrentTabSelected("edit");
+    const productClickedOn = basket.find(
+      (product) => product.id === idProductSelected
+    );
+    setIsProductSelected(productClickedOn);
   };
 
   return (
@@ -19,6 +39,8 @@ export default function BasketProduct({ basket }) {
             {...basketProduct}
             isModeAdmin={isModeAdmin}
             onDelete={(e) => handleOnDelete(e, basketProduct.id)}
+            onClick={() => handleClick(basketProduct.id)}
+            isSelected={isProductSelected.id === basketProduct.id}
           />
         </div>
       ))}

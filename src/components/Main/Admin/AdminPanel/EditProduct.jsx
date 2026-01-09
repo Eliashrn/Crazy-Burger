@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
-import styled from "styled-components";
 import EditInfoMessage from "./EditInfoMessage";
 import Form from "./Form";
 
@@ -10,14 +9,16 @@ export default function EditProduct() {
     setIsProductSelected,
     handleEdith,
     titleEdithBox,
+    handleEdithBasket,
   } = useContext(OrderContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     const productBeingUpdate = { ...isProductSelected, [name]: value };
-    setIsProductSelected(productBeingUpdate);
 
+    setIsProductSelected(productBeingUpdate);
     handleEdith(productBeingUpdate);
+    handleEdithBasket(productBeingUpdate);
   };
 
   return (
@@ -29,26 +30,3 @@ export default function EditProduct() {
     />
   );
 }
-
-const EditProductStyled = styled.form`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(4, 1fr);
-  height: 100%;
-  width: 70%;
-  grid-column-gap: 20px;
-  grid-row-gap: 8px;
-
-  .input-fields {
-    grid-area: 1 / 2 / -2 / 3;
-    display: grid;
-    grid-row-gap: 8px;
-  }
-
-  .submit {
-    grid-area: 4 / -2 / -1 / -1;
-    display: flex;
-    position: relative;
-    align-items: center;
-  }
-`;
