@@ -81,7 +81,6 @@ const OrderPageStyled = styled.div`
   height: 100vh;
 
   .container {
-    border-radius: ${theme.borderRadius.extraRound};
     height: 933px;
     width: 1400px;
     display: flex;

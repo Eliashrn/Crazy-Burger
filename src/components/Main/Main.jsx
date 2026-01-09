@@ -26,6 +26,7 @@ const MainStyled = styled.div`
   height: calc(95vh - 10vh);
   display: grid;
   grid-template-columns: 25% 1fr;
+  overflow: hidden;
 
   .menu-and-admin {
     position: relative;
