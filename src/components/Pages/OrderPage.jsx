@@ -23,14 +23,8 @@ const OrderPage = () => {
     handleDeleteFromBasket,
     handleEdithBasket,
   } = useBasket();
-  const {
-    menu,
-
-    handleAddProduct,
-    handleDelete,
-    handleEdith,
-    restMenu,
-  } = useMenuProduct();
+  const { menu, handleAddProduct, handleDelete, handleEdith, restMenu } =
+    useMenuProduct();
 
   // comportements
 

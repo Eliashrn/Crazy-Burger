@@ -6,14 +6,16 @@ import Input from "./Input";
 import Button from "./Button";
 import { useNavigate } from "react-router";
 import { theme } from "../../theme";
+import { createUser } from "../../api/user";
 
 export function Form() {
-  const [inputAss, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/order/${inputAss}`);
+    createUser(inputValue);
+    navigate(`/order/${inputValue}`);
     setInputValue("");
   };
 
@@ -26,7 +28,7 @@ export function Form() {
       </div>
       <div>
         <Input
-          value={inputAss}
+          value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder={"Entrez votre prénom..."}
           Icon={<BsPersonCircle />}
