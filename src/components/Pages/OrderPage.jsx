@@ -2,12 +2,13 @@ import styled from "styled-components";
 import Navbar from "./Navbar";
 import { theme } from "../../theme";
 import Main from "../Main/Main";
-import { useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import OrderContext from "../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../enums/product";
 import { useMenuProduct } from "../../hooks/useMenuProduct";
 import { useBasket } from "../../hooks/useBasket";
 import { useParams } from "react-router";
+import { getMenu } from "../../api/product";
 
 const OrderPage = () => {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -26,10 +27,26 @@ const OrderPage = () => {
     handleEdithBasket,
   } = useBasket();
 
-  const { menu, handleAddProduct, handleDelete, handleEdith, restMenu } =
-    useMenuProduct();
+  const {
+    menu,
+    setMenu,
+    handleAddProduct,
+    handleDelete,
+    handleEdith,
+    restMenu,
+  } = useMenuProduct();
 
   // comportements
+
+  const initialiseMenu = async () => {
+    const menuRecived = await getMenu(username);
+    console.log(menuRecived);
+    setMenu(menuRecived);
+  };
+
+  useEffect(() => {
+    initialiseMenu();
+  });
 
   const orderContextValue = {
     newProduct,

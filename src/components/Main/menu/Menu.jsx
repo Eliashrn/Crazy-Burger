@@ -54,7 +54,6 @@ export default function Menu() {
     handleDeleteFromBasket(idPrductToDelete);
     idPrductToDelete === isProductSelected.idPrductToDelete &&
       setIsProductSelected(EMPTY_PRODUCT);
-    titleEdithBox.current.focus();
   };
 
   const handleAddButton = (e, id) => {
