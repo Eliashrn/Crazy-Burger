@@ -6,17 +6,16 @@ import Input from "./Input";
 import Button from "./Button";
 import { useNavigate } from "react-router";
 import { theme } from "../../theme";
-import { createUser } from "../../api/user";
-
+import { isExistingUser } from "../../api/user";
 export function Form() {
-  const [inputValue, setInputValue] = useState("");
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUser(inputValue);
-    navigate(`/order/${inputValue}`);
-    setInputValue("");
+    isExistingUser(userName);
+    setUserName("");
+    navigate(`/order/${userName}`);
   };
 
   return (
@@ -28,8 +27,8 @@ export function Form() {
       </div>
       <div>
         <Input
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
           placeholder={"Entrez votre prénom..."}
           Icon={<BsPersonCircle />}
           className="input-login"

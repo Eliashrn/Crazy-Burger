@@ -16,7 +16,15 @@ export const createUser = (userId) => {
 
   const newDoc = {
     username: userId,
-    menu: fakeMenu.LARGE,
+    menu: fakeMenu.SMALL,
   };
   setDoc(docRef, newDoc);
+};
+
+export const isExistingUser = async (username) => {
+  const existingUser = await getUser(username);
+
+  if (!existingUser) {
+    createUser(username);
+  }
 };
