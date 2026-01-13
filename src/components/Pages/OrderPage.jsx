@@ -7,6 +7,7 @@ import OrderContext from "../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../enums/product";
 import { useMenuProduct } from "../../hooks/useMenuProduct";
 import { useBasket } from "../../hooks/useBasket";
+import { useParams } from "react-router";
 
 const OrderPage = () => {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -14,6 +15,7 @@ const OrderPage = () => {
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isProductSelected, setIsProductSelected] = useState(EMPTY_PRODUCT);
+  const { username } = useParams();
 
   const titleEdithBox = useRef();
   const {
@@ -23,6 +25,7 @@ const OrderPage = () => {
     handleDeleteFromBasket,
     handleEdithBasket,
   } = useBasket();
+
   const { menu, handleAddProduct, handleDelete, handleEdith, restMenu } =
     useMenuProduct();
 
@@ -50,6 +53,7 @@ const OrderPage = () => {
     handleAddToBasket,
     handleDeleteFromBasket,
     handleEdithBasket,
+    username,
   };
 
   return (

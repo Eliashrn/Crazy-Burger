@@ -8,11 +8,9 @@ import Button from "../../../Reusable-ui/Button";
 
 export default function AddProduct() {
   //State
-  const { handleAddProduct, newProduct, setNewProduct } =
+  const { handleAddProduct, newProduct, setNewProduct, username } =
     useContext(OrderContext);
   const { successSubmit, succesSubmit } = useSuccesSubmit();
-
-  // const [successSubmit, setSuccessSubmit] = useState(false);
 
   //Comportements
 
@@ -31,7 +29,7 @@ export default function AddProduct() {
       id: crypto.randomUUID(),
       ...newProduct,
     };
-    handleAddProduct(newProductToAdd);
+    handleAddProduct(newProductToAdd, username);
     setNewProduct(EMPTY_PRODUCT);
   };
 

@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { fakeMenu } from "../fakeData/fakeMenu";
+import { syncBothMenus } from "../api/product";
 
 export const useMenuProduct = () => {
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
-  const handleAddProduct = (newProduct) => {
+  const handleAddProduct = (newProduct, userName) => {
     //1. Copie du tableau menu
     const menuCopy = JSON.parse(JSON.stringify(menu));
     //2. Manipuler la copie du tableau
     const menuUpdated = [newProduct, ...menuCopy];
     //3. Mettre à jour le state avec la copie modifiée
     setMenu(menuUpdated);
+    syncBothMenus(userName, menuUpdated);
   };
 
   const handleDelete = (idDelete) => {
