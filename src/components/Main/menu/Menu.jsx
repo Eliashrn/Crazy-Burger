@@ -22,6 +22,7 @@ export default function Menu() {
     titleEdithBox,
     handleAddToBasket,
     handleDeleteFromBasket,
+    username,
   } = useContext(OrderContext);
 
   const handleClick = async (idProductSelected) => {
@@ -49,7 +50,7 @@ export default function Menu() {
 
   const handleCardDelete = (e, idPrductToDelete) => {
     e.stopPropagation();
-    handleDelete(idPrductToDelete);
+    handleDelete(idPrductToDelete, username);
     handleDeleteFromBasket(idPrductToDelete);
     idPrductToDelete === isProductSelected.idPrductToDelete &&
       setIsProductSelected(EMPTY_PRODUCT);

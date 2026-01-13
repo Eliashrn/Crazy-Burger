@@ -15,11 +15,12 @@ export const useMenuProduct = () => {
     syncBothMenus(userName, menuUpdated);
   };
 
-  const handleDelete = (idDelete) => {
+  const handleDelete = (idDelete, userName) => {
     const menuCpy = JSON.parse(JSON.stringify(menu));
 
     const menuUpdated = menuCpy.filter((product) => product.id !== idDelete);
     setMenu(menuUpdated);
+    syncBothMenus(userName, menuUpdated);
   };
 
   const handleEdith = (productBeingEdited) => {
