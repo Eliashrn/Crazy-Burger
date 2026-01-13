@@ -7,6 +7,7 @@ import Button from "./Button";
 import { useNavigate } from "react-router";
 import { theme } from "../../theme";
 import { isExistingUser } from "../../api/user";
+import Welcome from "./Welcome";
 export function Form() {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
@@ -20,11 +21,7 @@ export function Form() {
 
   return (
     <StyledForm action="submit" onSubmit={handleSubmit}>
-      <div>
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez vous</h2>
-      </div>
+      <Welcome />
       <div>
         <Input
           value={userName}
