@@ -42,12 +42,13 @@ export default function Menu() {
     return idProductInmenu === isProductClickedon;
   };
 
-  if (!menu) return <Loader />;
+  if (menu === undefined) return <Loader />;
 
   if (menu.length === 0) {
-    if (!isModeAdmin) return <EmptyMenuClient />;
-
-    return <EmptyMenuAdmin restMenu={() => restMenu(username)} />;
+    if (!isModeAdmin) {
+      return <EmptyMenuClient />;
+    }
+    return <EmptyMenuAdmin restMenu={restMenu} />;
   }
 
   const handleCardDelete = (e, idPrductToDelete) => {

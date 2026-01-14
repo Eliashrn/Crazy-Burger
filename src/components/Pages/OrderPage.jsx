@@ -45,7 +45,7 @@ const OrderPage = () => {
 
   useEffect(() => {
     initialiseMenu();
-  }, []);
+  }, [username]);
 
   const orderContextValue = {
     newProduct,

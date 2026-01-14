@@ -3,7 +3,7 @@ import { fakeMenu } from "../fakeData/fakeMenu";
 import { syncBothMenus } from "../api/product";
 
 export const useMenuProduct = () => {
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState();
 
   const handleAddProduct = (newProduct, userName) => {
     //1. Copie du tableau menu
@@ -23,7 +23,7 @@ export const useMenuProduct = () => {
     syncBothMenus(userName, menuUpdated);
   };
 
-  const handleEdith = (productBeingEdited) => {
+  const handleEdith = (productBeingEdited, userName) => {
     const menuCopy = JSON.parse(JSON.stringify(menu));
 
     const indexOfProduct = menu.findIndex(
@@ -32,6 +32,7 @@ export const useMenuProduct = () => {
     menuCopy[indexOfProduct] = productBeingEdited;
 
     setMenu(menuCopy);
+    syncBothMenus(userName, menuCopy);
   };
 
   const restMenu = (userName) => {
