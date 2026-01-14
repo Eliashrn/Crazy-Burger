@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../enums/product.jsx";
+import Loader from "./Loader.jsx";
 
 export default function Menu() {
   useContext(OrderContext);
@@ -40,6 +41,8 @@ export default function Menu() {
   const checkIfProductIsClicked = (idProductInmenu, isProductClickedon) => {
     return idProductInmenu === isProductClickedon;
   };
+
+  if (menu === undefined) return <Loader />;
 
   if (menu.length === 0) {
     if (!isModeAdmin) {

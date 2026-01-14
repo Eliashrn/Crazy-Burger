@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { fakeBasket } from "../fakeData/fakeBasket";
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.MEDIUM);
+  const [basket, setBasket] = useState([]);
 
   const handleAddToBasket = (productToAdd) => {
     const basketCopy = JSON.parse(JSON.stringify(basket));

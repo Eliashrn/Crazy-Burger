@@ -3,7 +3,7 @@ import { fakeMenu } from "../fakeData/fakeMenu";
 import { syncBothMenus } from "../api/product";
 
 export const useMenuProduct = () => {
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState();
 
   const handleAddProduct = (newProduct, userName) => {
     //1. Copie du tableau menu

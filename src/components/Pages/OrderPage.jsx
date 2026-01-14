@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Navbar from "./Navbar";
 import { theme } from "../../theme";
 import Main from "../Main/Main";
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OrderContext from "../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../enums/product";
 import { useMenuProduct } from "../../hooks/useMenuProduct";
@@ -40,7 +40,6 @@ const OrderPage = () => {
 
   const initialiseMenu = async () => {
     const menuRecived = await getMenu(username);
-    console.log(menuRecived);
     setMenu(menuRecived);
   };
 
