@@ -40,7 +40,6 @@ export const useBasket = () => {
 
   const handleEdithBasket = (productBeingEdited, username) => {
     const basketCopy = JSON.parse(JSON.stringify(basket));
-
     const indexOfProduct = basketCopy.findIndex(
       (product) => product.id === productBeingEdited.id
     );
