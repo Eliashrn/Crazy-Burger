@@ -48,7 +48,7 @@ export default function Menu() {
     if (!isModeAdmin) {
       return <EmptyMenuClient />;
     }
-    return <EmptyMenuAdmin restMenu={restMenu} />;
+    return <EmptyMenuAdmin restMenu={() => restMenu(username)} />;
   }
 
   const handleCardDelete = (e, idPrductToDelete) => {

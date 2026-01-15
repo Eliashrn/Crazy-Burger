@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import { useContext, useState } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import EditInfoMessage from "./EditInfoMessage";
 import Form from "./Form";
+import SaveMessage from "./SaveMessage";
+import { useSuccesSubmit } from "../../../../hooks/useSuccesSubmit";
 
 export default function EditProduct() {
+  const [valueOnFocus, setValueOnFocus] = useState("");
+  const { successSubmit: isSaved, succesSubmit } = useSuccesSubmit();
+
   const {
     isProductSelected,
     setIsProductSelected,
@@ -22,12 +27,26 @@ export default function EditProduct() {
     handleEdithBasket(productBeingUpdate);
   };
 
+  const handleOnFocus = (e) => {
+    const inputValueOnFocus = e.target.value;
+    setValueOnFocus(inputValueOnFocus);
+  };
+
+  const handleOnBlur = (e) => {
+    const valueOnBlur = e.target.value;
+    if (valueOnBlur !== valueOnFocus) {
+      succesSubmit();
+    }
+  };
+
   return (
     <Form
       product={isProductSelected}
       onChange={handleChange}
       ref={titleEdithBox}
-      button={<EditInfoMessage />}
+      button={isSaved ? <SaveMessage /> : <EditInfoMessage />}
+      onFocus={handleOnFocus}
+      onBlur={handleOnBlur}
     />
   );
 }
