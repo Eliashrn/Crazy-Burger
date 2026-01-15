@@ -52,6 +52,7 @@ export const useBasket = () => {
 
   return {
     basket,
+    setBasket,
     handleAddToBasket,
     handleDeleteFromBasket,
     handleEdithBasket,

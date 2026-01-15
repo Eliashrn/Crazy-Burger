@@ -9,6 +9,7 @@ import { useMenuProduct } from "../../hooks/useMenuProduct";
 import { useBasket } from "../../hooks/useBasket";
 import { useParams } from "react-router";
 import { getMenu } from "../../api/product";
+import { getLocalStorage } from "../../utils/window";
 
 const OrderPage = () => {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -43,9 +44,18 @@ const OrderPage = () => {
     setMenu(menuRecived);
   };
 
+  const initialiseBasket = async () => {
+    const basketRecived = getLocalStorage(username);
+    setBasket(basketRecived);
+  };
+
   useEffect(() => {
     initialiseMenu();
   }, [username]);
+
+  useEffect(() => {
+    initialiseBasket();
+  }, []);
 
   const orderContextValue = {
     newProduct,
