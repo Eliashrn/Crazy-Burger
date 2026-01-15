@@ -35,7 +35,7 @@ export const useBasket = () => {
     );
 
     setBasket(basketUpdated);
-    setLocalStorage(username, basketCopy);
+    setLocalStorage(username, basketUpdated);
   };
 
   const handleEdithBasket = (productBeingEdited, username) => {

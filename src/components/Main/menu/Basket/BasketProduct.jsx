@@ -11,11 +11,12 @@ export default function BasketProduct({ basket }) {
     setIsProductSelected,
     setCurrentTabSelected,
     setIsCollapsed,
+    username,
   } = useContext(OrderContext);
 
   const handleOnDelete = (e, productId) => {
     e.stopPropagation();
-    handleDeleteFromBasket(productId);
+    handleDeleteFromBasket(productId, username);
     setCurrentTabSelected("edit");
   };
 
