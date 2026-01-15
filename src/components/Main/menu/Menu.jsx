@@ -53,8 +53,8 @@ export default function Menu() {
 
   const handleCardDelete = (e, idPrductToDelete) => {
     e.stopPropagation();
-    handleDelete(idPrductToDelete, username);
-    handleDeleteFromBasket(idPrductToDelete);
+    handleDelete(idPrductToDelete);
+    handleDeleteFromBasket(idPrductToDelete, username);
     idPrductToDelete === isProductSelected.idPrductToDelete &&
       setIsProductSelected(EMPTY_PRODUCT);
   };
@@ -62,7 +62,7 @@ export default function Menu() {
   const handleAddButton = (e, id) => {
     e.stopPropagation();
     const productToAdd = menu.find((product) => product.id === id);
-    handleAddToBasket(productToAdd);
+    handleAddToBasket(productToAdd, username);
   };
 
   return (

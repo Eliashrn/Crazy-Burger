@@ -24,7 +24,7 @@ export default function EditProduct() {
 
     setIsProductSelected(productBeingUpdate);
     handleEdith(productBeingUpdate, username);
-    handleEdithBasket(productBeingUpdate);
+    handleEdithBasket(productBeingUpdate, username);
   };
 
   const handleOnFocus = (e) => {
