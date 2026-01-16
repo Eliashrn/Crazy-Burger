@@ -6,28 +6,26 @@ import Input from "./Input";
 import Button from "./Button";
 import { useNavigate } from "react-router";
 import { theme } from "../../theme";
-
+import { isExistingUser } from "../../api/user";
+import Welcome from "./Welcome";
 export function Form() {
-  const [inputAss, setInputValue] = useState("");
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/order/${inputAss}`);
-    setInputValue("");
+    isExistingUser(userName);
+    setUserName("");
+    navigate(`/order/${userName}`);
   };
 
   return (
     <StyledForm action="submit" onSubmit={handleSubmit}>
-      <div>
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez vous</h2>
-      </div>
+      <Welcome />
       <div>
         <Input
-          value={inputAss}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
           placeholder={"Entrez votre prénom..."}
           Icon={<BsPersonCircle />}
           className="input-login"

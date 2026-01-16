@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { fakeBasket } from "../fakeData/fakeBasket";
+import { setLocalStorage } from "../utils/window";
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.MEDIUM);
+  const [basket, setBasket] = useState([]);
 
-  const handleAddToBasket = (productToAdd) => {
+  const handleAddToBasket = (productToAdd, username) => {
     const basketCopy = JSON.parse(JSON.stringify(basket));
 
     const productFoundInBasket = basketCopy.find(
@@ -17,6 +17,7 @@ export const useBasket = () => {
       const basketUpdated = [newBasketProduct, ...basketCopy];
 
       setBasket(basketUpdated);
+      setLocalStorage(username, basketUpdated);
       return;
     }
     const indexOfBasketProducToIncrement = basket.findIndex(
@@ -24,30 +25,33 @@ export const useBasket = () => {
     );
     basketCopy[indexOfBasketProducToIncrement].quantity += 1;
     setBasket(basketCopy);
+    setLocalStorage(username, basketCopy);
   };
 
-  const handleDeleteFromBasket = (productIdToDelete) => {
+  const handleDeleteFromBasket = (productIdToDelete, username) => {
     const basketCopy = JSON.parse(JSON.stringify(basket));
     const basketUpdated = basketCopy.filter(
       (product) => product.id !== productIdToDelete
     );
 
     setBasket(basketUpdated);
+    setLocalStorage(username, basketUpdated);
   };
 
-  const handleEdithBasket = (productBeingEdited) => {
+  const handleEdithBasket = (productBeingEdited, username) => {
     const basketCopy = JSON.parse(JSON.stringify(basket));
-
     const indexOfProduct = basketCopy.findIndex(
       (product) => product.id === productBeingEdited.id
     );
     basketCopy[indexOfProduct] = productBeingEdited;
 
     setBasket(basketCopy);
+    setLocalStorage(username, basketCopy);
   };
 
   return {
     basket,
+    setBasket,
     handleAddToBasket,
     handleDeleteFromBasket,
     handleEdithBasket,

@@ -1,4 +1,3 @@
-import { Link, useParams } from "react-router";
 import Logo from "../Reusable-ui/Logo";
 import styled from "styled-components";
 import Profile from "./Profile";
@@ -10,7 +9,7 @@ import { FaUserSecret } from "react-icons/fa";
 import OrderContext from "../../context/OrderContext";
 
 const Navbar = () => {
-  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
+  const { isModeAdmin, setIsModeAdmin, username } = useContext(OrderContext);
 
   const notify = () => {
     if (!isModeAdmin) {
@@ -29,7 +28,6 @@ const Navbar = () => {
     setIsModeAdmin(!isModeAdmin);
   };
 
-  const { inputAss } = useParams();
   return (
     <StyledNavbar>
       <Logo
@@ -44,7 +42,7 @@ const Navbar = () => {
           labelIfChecked="DÉSACTIVER LE MODE ADMIN"
           onToggle={notify}
         />
-        <Profile username={inputAss} />
+        <Profile username={username} />
         <ToastContainer className="toaster" bodyClassName="body-toast" />
         <div className="picture"></div>
       </div>

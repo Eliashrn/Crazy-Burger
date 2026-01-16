@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../enums/product.jsx";
+import Loader from "./Loader.jsx";
 
 export default function Menu() {
   useContext(OrderContext);
@@ -22,6 +23,7 @@ export default function Menu() {
     titleEdithBox,
     handleAddToBasket,
     handleDeleteFromBasket,
+    username,
   } = useContext(OrderContext);
 
   const handleClick = async (idProductSelected) => {
@@ -40,26 +42,27 @@ export default function Menu() {
     return idProductInmenu === isProductClickedon;
   };
 
+  if (menu === undefined) return <Loader />;
+
   if (menu.length === 0) {
     if (!isModeAdmin) {
       return <EmptyMenuClient />;
     }
-    return <EmptyMenuAdmin restMenu={restMenu} />;
+    return <EmptyMenuAdmin restMenu={() => restMenu(username)} />;
   }
 
   const handleCardDelete = (e, idPrductToDelete) => {
     e.stopPropagation();
     handleDelete(idPrductToDelete);
-    handleDeleteFromBasket(idPrductToDelete);
+    handleDeleteFromBasket(idPrductToDelete, username);
     idPrductToDelete === isProductSelected.idPrductToDelete &&
       setIsProductSelected(EMPTY_PRODUCT);
-    titleEdithBox.current.focus();
   };
 
   const handleAddButton = (e, id) => {
     e.stopPropagation();
     const productToAdd = menu.find((product) => product.id === id);
-    handleAddToBasket(productToAdd);
+    handleAddToBasket(productToAdd, username);
   };
 
   return (
