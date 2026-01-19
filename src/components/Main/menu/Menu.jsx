@@ -30,7 +30,7 @@ export default function Menu() {
     if (!isModeAdmin) return;
 
     const productClickedOn = menu.find(
-      (product) => product.id === idProductSelected
+      (product) => product.id === idProductSelected,
     );
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
@@ -53,7 +53,7 @@ export default function Menu() {
 
   const handleCardDelete = (e, idPrductToDelete) => {
     e.stopPropagation();
-    handleDelete(idPrductToDelete);
+    handleDelete(idPrductToDelete, username);
     handleDeleteFromBasket(idPrductToDelete, username);
     idPrductToDelete === isProductSelected.idPrductToDelete &&
       setIsProductSelected(EMPTY_PRODUCT);
