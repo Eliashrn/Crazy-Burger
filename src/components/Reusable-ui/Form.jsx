@@ -12,11 +12,11 @@ export function Form() {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    isExistingUser(userName);
+    const userRecived = await isExistingUser(userName);
     setUserName("");
-    navigate(`/order/${userName}`);
+    navigate(`/order/${userRecived.username}`);
   };
 
   return (

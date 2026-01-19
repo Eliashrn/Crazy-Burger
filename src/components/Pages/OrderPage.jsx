@@ -46,7 +46,9 @@ const OrderPage = () => {
 
   const initialiseBasket = async () => {
     const basketRecived = getLocalStorage(username);
-    setBasket(basketRecived);
+    if (basketRecived) {
+      setBasket(basketRecived);
+    }
   };
 
   useEffect(() => {

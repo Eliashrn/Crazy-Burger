@@ -7,11 +7,15 @@ import Footer from "./Footer";
 import EmptyBasket from "./EmptyBasket";
 import OrderContext from "../../../../context/OrderContext";
 import BasketProduct from "./BasketProduct";
+import Loader from "../Loader";
 
 export default function Basket() {
-  const { basket } = useContext(OrderContext);
+  const { basket, menu } = useContext(OrderContext);
 
-  if (basket === null) return <span>Loading...</span>;
+  if (basket === null) return <Loader />;
+
+  if (menu === undefined) return <Loader />;
+
   const isBasketEmpty = basket.length === 0;
 
   const amoundTopay = basket.reduce((total, basketProduct) => {
