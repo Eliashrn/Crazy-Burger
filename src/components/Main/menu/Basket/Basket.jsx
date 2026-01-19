@@ -11,6 +11,7 @@ import BasketProduct from "./BasketProduct";
 export default function Basket() {
   const { basket } = useContext(OrderContext);
 
+  if (basket === null) return <span>Loading...</span>;
   const isBasketEmpty = basket.length === 0;
 
   const amoundTopay = basket.reduce((total, basketProduct) => {
