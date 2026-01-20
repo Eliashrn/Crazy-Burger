@@ -8,7 +8,7 @@ export const useBasket = () => {
     const basketCopy = JSON.parse(JSON.stringify(basket));
 
     const productFoundInBasket = basketCopy.find(
-      (product) => product.id === productToAdd.id
+      (product) => product.id === productToAdd.id,
     );
 
     if (!productFoundInBasket) {
@@ -21,7 +21,7 @@ export const useBasket = () => {
       return;
     }
     const indexOfBasketProducToIncrement = basket.findIndex(
-      (basketproduct) => basketproduct.id === productToAdd.id
+      (basketproduct) => basketproduct.id === productToAdd.id,
     );
     basketCopy[indexOfBasketProducToIncrement].quantity += 1;
     setBasket(basketCopy);
@@ -31,7 +31,7 @@ export const useBasket = () => {
   const handleDeleteFromBasket = (productIdToDelete, username) => {
     const basketCopy = JSON.parse(JSON.stringify(basket));
     const basketUpdated = basketCopy.filter(
-      (product) => product.id !== productIdToDelete
+      (product) => product.id !== productIdToDelete,
     );
 
     setBasket(basketUpdated);
@@ -41,7 +41,7 @@ export const useBasket = () => {
   const handleEdithBasket = (productBeingEdited, username) => {
     const basketCopy = JSON.parse(JSON.stringify(basket));
     const indexOfProduct = basketCopy.findIndex(
-      (product) => product.id === productBeingEdited.id
+      (product) => product.id === productBeingEdited.id,
     );
     basketCopy[indexOfProduct] = productBeingEdited;
 
