@@ -2,12 +2,12 @@ import { useState } from "react";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForwardSharp } from "react-icons/io5";
-import Input from "../../Reusable-ui/Input";
 import Button from "../../Reusable-ui/Button";
 import { useNavigate } from "react-router";
 import { theme } from "../../../theme";
 import { isExistingUser } from "../../../api/user";
 import Welcome from "./Welcome";
+import TextInput from "../../Reusable-ui/TextInput";
 export function LoginForm() {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export function LoginForm() {
     <StyledForm action="submit" onSubmit={handleSubmit}>
       <Welcome />
       <div>
-        <Input
+        <TextInput
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           placeholder={"Entrez votre prénom..."}

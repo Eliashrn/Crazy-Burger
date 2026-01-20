@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Input from "../../../../../../Reusable-ui/Input";
+import TextInput from "../../../../../../Reusable-ui/TextInput";
 import { getInputTextConfig } from "./getInputTextConfig";
 import React from "react";
 import ImagePreview from "./ImagePreview";
@@ -15,7 +15,8 @@ const Form = React.forwardRef(
         <ImagePreview imageSource={product.imageSource} title={product.title} />
         <div className="input-fields">
           {inputTexts.map((input) => (
-            <Input
+            <TextInput
+              className={input.classeName}
               key={input.id}
               {...input}
               onChange={onChange}
@@ -44,9 +45,23 @@ const FormStyled = styled.form`
   grid-row-gap: 8px;
 
   .input-fields {
-    grid-area: 1 / 2 / -2 / 3;
     display: grid;
+    grid-area: 1 / 2 / -2 / 3;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 8px;
+
+    .title {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .image-source {
+      grid-area: 2 / 1 / 3 / 4;
+    }
+    .price {
+      grid-area: 3 / 1 / 4 / 2;
+      background: #000;
+    }
   }
 
   .submit {

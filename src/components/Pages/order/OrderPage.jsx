@@ -12,7 +12,7 @@ import { getMenu } from "../../../api/product";
 import { getLocalStorage } from "../../../utils/window";
 
 const OrderPage = () => {
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);

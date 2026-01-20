@@ -1,3 +1,4 @@
+import { FiPackage } from "react-icons/fi";
 import { LuEuro } from "react-icons/lu";
 import { MdPhotoCamera } from "react-icons/md";
 import { PiHamburgerFill } from "react-icons/pi";
@@ -9,9 +10,9 @@ export const getInputTextConfig = (newProduct) => [
     value: newProduct.title ? newProduct.title : "",
     type: "text",
     placeholder: "Nom du produit (ex: Super Burger)",
-
     Icon: <PiHamburgerFill />,
     version: "extraStyleMinimalist",
+    classeName: "title",
   },
   {
     id: "1",
@@ -20,9 +21,9 @@ export const getInputTextConfig = (newProduct) => [
     type: "text",
     placeholder:
       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
-
     Icon: <MdPhotoCamera />,
     version: "extraStyleMinimalist",
+    classeName: "image-source",
   },
   {
     id: "2",
@@ -30,8 +31,14 @@ export const getInputTextConfig = (newProduct) => [
     value: newProduct.price ? newProduct.price : "",
     type: "text",
     placeholder: "Prix",
-
     Icon: <LuEuro />,
     version: "extraStyleMinimalist",
+    classeName: "price",
   },
+  // {
+  //   id: "3",
+  //   name: "En stock",
+  //   type: "checkbox",
+  //   Icon: <FiPackage />,
+  // },
 ];
