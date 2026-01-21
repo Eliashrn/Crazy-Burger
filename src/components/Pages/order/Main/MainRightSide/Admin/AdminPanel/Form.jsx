@@ -19,7 +19,7 @@ const Form = React.forwardRef(
         <div className="input-fields">
           {inputTexts.map((input) => (
             <TextInput
-              className={input.classeName}
+              className={input.className}
               key={input.id}
               {...input}
               onChange={onChange}
@@ -31,11 +31,13 @@ const Form = React.forwardRef(
           ))}
           {selectConfig.map((select) => (
             <SelectInput
-              className={select.classeName}
+              className={select.className}
               key={select.id}
               options={select.options}
               name={select.name}
               id={select.id}
+              value={select.value}
+              onChange={onChange}
             />
           ))}
         </div>

@@ -52,12 +52,12 @@ const OrderPage = () => {
   };
 
   useEffect(() => {
-    initialiseMenu();
-  });
+    initialiseMenu(username);
+  }, []);
 
   useEffect(() => {
     initialiseBasket();
-  });
+  }, []);
 
   const orderContextValue = {
     newProduct,

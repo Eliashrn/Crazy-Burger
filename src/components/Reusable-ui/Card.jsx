@@ -10,16 +10,16 @@ export default function Card({
   hasDelete,
   onDelete,
   onClick,
-  isHoverable,
-  isSelected,
+  $isHoverable,
+  $isSelected,
   onAdd,
 }) {
   return (
     <CardStyled
       className="produit"
       onClick={onClick}
-      isHoverable={isHoverable}
-      isSelected={isSelected}
+      $isHoverable={$isHoverable}
+      $isSelected={$isSelected}
     >
       <div className="card">
         {hasDelete && (
@@ -53,7 +53,7 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${({ isHoverable }) => isHoverable && hoverableStyle}
+  ${({ $isHoverable }) => $isHoverable && hoverableStyle}
 
   height: 330px;
 
@@ -164,8 +164,8 @@ const CardStyled = styled.div`
         }
       }
     }
-    ${({ isHoverable, isSelected }) =>
-      isHoverable && isSelected && selectedStyle}
+    ${({ $isHoverable, $isSelected }) =>
+      $isHoverable && $isSelected && selectedStyle}
   }
 `;
 

@@ -27,7 +27,7 @@ export const useMenuProduct = () => {
     const menuCopy = JSON.parse(JSON.stringify(menu));
 
     const indexOfProduct = menu.findIndex(
-      (product) => product.id === productBeingEdited.id
+      (product) => product.id === productBeingEdited.id,
     );
     menuCopy[indexOfProduct] = productBeingEdited;
 
@@ -36,8 +36,8 @@ export const useMenuProduct = () => {
   };
 
   const restMenu = (userName) => {
-    setMenu(fakeMenu.MEDIUM);
-    syncBothMenus(userName, fakeMenu.MEDIUM);
+    setMenu(fakeMenu.SMALL);
+    syncBothMenus(userName, fakeMenu.SMALL);
   };
 
   return {

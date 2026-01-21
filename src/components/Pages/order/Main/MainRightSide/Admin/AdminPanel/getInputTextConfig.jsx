@@ -16,7 +16,7 @@ export const getInputTextConfig = (newProduct) => [
     placeholder: "Nom du produit (ex: Super Burger)",
     Icon: <PiHamburgerFill />,
     version: "extraStyleMinimalist",
-    classeName: "title",
+    className: "title",
   },
   {
     id: "1",
@@ -27,7 +27,7 @@ export const getInputTextConfig = (newProduct) => [
       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
     Icon: <MdPhotoCamera />,
     version: "extraStyleMinimalist",
-    classeName: "image-source",
+    className: "image-source",
   },
   {
     id: "2",
@@ -37,7 +37,7 @@ export const getInputTextConfig = (newProduct) => [
     placeholder: "Prix",
     Icon: <LuEuro />,
     version: "extraStyleMinimalist",
-    classeName: "price",
+    className: "price",
   },
 ];
 
@@ -46,14 +46,14 @@ export const getSelectTextConfig = (newProduct) => [
     id: "3",
     name: "isAvailable",
     value: newProduct.isAvailable,
-    classeName: "is-available",
+    className: "is-available",
     options: isAvailableOption,
   },
   {
     id: "4",
     name: "isPublicised",
     value: newProduct.isPublicised,
-    classeName: "is-publicised",
+    className: "is-publicised",
     options: isPublicisedOption,
   },
 ];
