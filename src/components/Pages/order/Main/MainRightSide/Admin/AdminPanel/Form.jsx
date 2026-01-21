@@ -3,10 +3,21 @@ import TextInput from "../../../../../../Reusable-ui/TextInput";
 import { getInputTextConfig } from "./getInputTextConfig";
 import React from "react";
 import ImagePreview from "./ImagePreview";
+import SelectInput from "../../../../../../Reusable-ui/SelectInput";
 
 const Form = React.forwardRef(
   ({ product, onSubmit, onChange, button, onFocus, onBlur }, ref) => {
     const inputTexts = getInputTextConfig(product);
+
+    const isValableOption = [
+      { value: true, label: "En stock" },
+      { value: false, label: "Hors stock" },
+    ];
+
+    const isPublicisedOption = [
+      { value: true, label: "Sans pub" },
+      { value: false, label: "Avec pub" },
+    ];
 
     //Render
 
@@ -26,14 +37,16 @@ const Form = React.forwardRef(
               ref={ref && input.name === "title" ? ref : null}
             />
           ))}
-          <select name="isAvailable" className="is-available" id="3">
-            <option value={true}>En stock</option>
-            <option value={false}>Hors stock</option>
-          </select>
-          <select name="isPublicised" className="is-publicised" id="4">
-            <option value={true}>Sans pub</option>
-            <option value={false}>Avec pub</option>
-          </select>
+          <SelectInput
+            options={isValableOption}
+            className="is-available"
+            id={"03"}
+          />
+          <SelectInput
+            options={isPublicisedOption}
+            className="is-publicised"
+            id={"04"}
+          />
         </div>
         <div className="submit"> {button} </div>
       </FormStyled>
