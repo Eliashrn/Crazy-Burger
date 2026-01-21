@@ -2,6 +2,10 @@ import { FiPackage } from "react-icons/fi";
 import { LuEuro } from "react-icons/lu";
 import { MdPhotoCamera } from "react-icons/md";
 import { PiHamburgerFill } from "react-icons/pi";
+import {
+  isAvailableOption,
+  isPublicisedOption,
+} from "../../../../../../../enums/select";
 
 export const getInputTextConfig = (newProduct) => [
   {
@@ -35,10 +39,21 @@ export const getInputTextConfig = (newProduct) => [
     version: "extraStyleMinimalist",
     classeName: "price",
   },
-  // {
-  //   id: "3",
-  //   name: "En stock",
-  //   type: "checkbox",
-  //   Icon: <FiPackage />,
-  // },
+];
+
+export const getSelectTextConfig = (newProduct) => [
+  {
+    id: "3",
+    name: "isAvailable",
+    value: newProduct.isAvailable,
+    classeName: "is-available",
+    options: isAvailableOption,
+  },
+  {
+    id: "4",
+    name: "isPublicised",
+    value: newProduct.isPublicised,
+    classeName: "is-publicised",
+    options: isPublicisedOption,
+  },
 ];
