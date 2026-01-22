@@ -97,17 +97,15 @@ const OrderPage = () => {
 };
 
 const OrderPageStyled = styled.div`
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   background: ${theme.colors.primary};
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 
   .container {
-    height: 933px;
+    background: red;
+    height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction: column;

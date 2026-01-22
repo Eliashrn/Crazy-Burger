@@ -40,6 +40,7 @@ const Form = React.forwardRef(
               onChange={onChange}
               onBlur={onBlur}
               onFocus={onFocus}
+              Icon={select.Icon}
             />
           ))}
         </div>
@@ -77,12 +78,6 @@ const FormStyled = styled.form`
     }
     .price {
       grid-area: 3 / 1 / 4 / 2;
-      background: #000;
-    }
-    .is-available {
-    }
-
-    .is-publicised {
     }
   }
 
