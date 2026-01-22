@@ -6,11 +6,12 @@ import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
+import Loader from "./Loader.jsx";
 import {
   EMPTY_PRODUCT,
   IMAGE_BY_DEFAULT,
+  IMAGE_NO_STOCK,
 } from "../../../../../../enums/product.jsx";
-import Loader from "./Loader.jsx";
 
 export default function Menu() {
   useContext(OrderContext);
@@ -83,6 +84,8 @@ export default function Menu() {
             $isHoverable={isModeAdmin}
             $isSelected={checkIfProductIsClicked(id, isProductSelected.id)}
             onAdd={(e) => handleAddButton(e, id)}
+            isOverlappingImageVisible={true}
+            overlapImageSource={IMAGE_NO_STOCK}
           />
         );
       })}
