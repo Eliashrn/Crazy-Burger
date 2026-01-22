@@ -12,6 +12,7 @@ import {
   IMAGE_BY_DEFAULT,
   IMAGE_NO_STOCK,
 } from "../../../../../../enums/product.jsx";
+import { convertStringToBoolean } from "../../../../../../utils/string.js";
 
 export default function Menu() {
   useContext(OrderContext);
@@ -71,7 +72,7 @@ export default function Menu() {
 
   return (
     <MenuStyled className="menu">
-      {menu.map(({ id, title, imageSource, price }) => {
+      {menu.map(({ id, title, imageSource, price, isAvailable }) => {
         return (
           <Card
             key={id}
@@ -84,7 +85,9 @@ export default function Menu() {
             $isHoverable={isModeAdmin}
             $isSelected={checkIfProductIsClicked(id, isProductSelected.id)}
             onAdd={(e) => handleAddButton(e, id)}
-            isOverlappingImageVisible={true}
+            isOverlappingImageVisible={
+              convertStringToBoolean(isAvailable) === false
+            }
             overlapImageSource={IMAGE_NO_STOCK}
           />
         );
