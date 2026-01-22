@@ -50,6 +50,7 @@ export default function Card({
             <div className="right-description">
               <Button
                 className="primary-button"
+                disabled={isOverlappingImageVisible}
                 label={"Ajouter"}
                 onClick={onAdd}
               />
@@ -187,7 +188,6 @@ const CardStyled = styled.div`
 
           .primary-button {
             font-size: ${theme.fonts.size.XS};
-            cursor: pointer;
             padding: 12px;
             font-weight: ${theme.fonts.weights.bold};
             font-family: "Open Sans", sans-serif;
