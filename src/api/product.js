@@ -1,23 +1,40 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "./firebase-config";
+/**
+ * Met à jour le menu
+ */
+export const syncMenu = async (userId, menuUpdate) => {
+  try {
+    const ref = doc(db, "users", userId);
 
-export const syncBothMenus = (userId, menuUpdate) => {
-  const cachette = doc(db, "users", userId);
-
-  const nouriture = {
-    username: userId,
-    menu: menuUpdate,
-  };
-  setDoc(cachette, nouriture);
+    await setDoc(
+      ref,
+      {
+        menu: menuUpdate,
+      },
+      { merge: true }, // ⚠️ très important
+    );
+  } catch (error) {
+    console.error("syncMenu error:", error);
+    throw error;
+  }
 };
 
-export const getMenu = async (idUser) => {
-  const docRef = doc(db, "users", idUser);
+/**
+ * Récupère le menu
+ */
+export const getMenu = async (userId) => {
+  try {
+    const ref = doc(db, "users", userId);
+    const snap = await getDoc(ref);
 
-  const docSnapShot = await getDoc(docRef);
+    if (snap.exists()) {
+      return snap.data().menu;
+    }
 
-  if (docSnapShot.exists()) {
-    const { menu } = docSnapShot.data();
-    return menu;
+    return null;
+  } catch (error) {
+    console.error("getMenu error:", error);
+    throw error;
   }
 };

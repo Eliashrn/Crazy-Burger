@@ -1,33 +1,54 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "./firebase-config";
-import { fakeMenu } from "../fakeData/fakeMenu";
 
-export const getUser = async (idUser) => {
-  const docRef = doc(db, "users", idUser);
-  const docSnapShot = await getDoc(docRef);
-  if (docSnapShot.exists()) {
-    const userReceived = docSnapShot.data();
-    return userReceived;
+/**
+ * Récupère un utilisateur
+ */
+export const getUser = async (userId) => {
+  try {
+    const ref = doc(db, "users", userId);
+    const snap = await getDoc(ref);
+
+    if (snap.exists()) {
+      return snap.data();
+    }
+
+    return null;
+  } catch (error) {
+    console.error("getUser error:", error);
+    throw error;
   }
 };
 
-export const createUser = async (userId) => {
-  const docRef = doc(db, "users", userId);
+/**
+ * Crée un utilisateur
+ */
+export const createUser = async (userId, menu) => {
+  try {
+    const ref = doc(db, "users", userId);
 
-  const newDoc = {
-    username: userId,
-    menu: fakeMenu.SMALL,
-  };
-  await setDoc(docRef, newDoc);
+    const newUser = {
+      username: userId,
+      menu,
+    };
 
-  return newDoc;
+    await setDoc(ref, newUser);
+    return newUser;
+  } catch (error) {
+    console.error("createUser error:", error);
+    throw error;
+  }
 };
 
-export const isExistingUser = async (username) => {
-  const existingUser = await getUser(username);
+/**
+ * Vérifie si l'utilisateur existe, sinon le crée
+ */
+export const isExistingUser = async (userId, defaultMenu) => {
+  const user = await getUser(userId);
 
-  if (!existingUser) {
-    return await createUser(username);
+  if (!user) {
+    return await createUser(userId, defaultMenu);
   }
-  return existingUser;
+
+  return user;
 };
