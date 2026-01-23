@@ -1,5 +1,5 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "./firebase-config";
+import { db } from "/firebase-config";
 
 /**
  * Récupère un utilisateur
@@ -40,4 +40,18 @@ export const createUser = async (userId, menu) => {
     console.error("createUser error:", error);
     throw error;
   }
+};
+
+/**
+ * Vérifie si l'utilisateur existe, sinon le crée
+ */
+
+export const isExistingUser = async (userId, defaultMenu = []) => {
+  const user = await getUser(userId);
+
+  if (!user) {
+    return await createUser(userId, defaultMenu);
+  }
+
+  return user;
 };
