@@ -8,7 +8,7 @@ export default function Sticker({ label = "new", className }) {
 
 const StickerStyled = styled.span`
   font-size: ${theme.fonts.size.XXXS};
-  padding: 1em;
+  padding: 2em;
   width: 15px;
   height: 15px;
   display: flex;
