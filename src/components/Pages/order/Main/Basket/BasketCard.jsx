@@ -15,6 +15,7 @@ export default function BasketCard({
   onDelete,
   $isSelected,
   onClick,
+  overlapImageSource,
 }) {
   return (
     <BasketCardStyled
@@ -34,7 +35,9 @@ export default function BasketCard({
           <div className="title">
             <span>{title}</span>
           </div>
-          <span className="price">{formatPrice(price)}</span>
+          <span className="price">
+            {overlapImageSource ? formatPrice(price) : "Non disponible"}
+          </span>
         </div>
         <div className="quantity">
           <span>x {quantity}</span>

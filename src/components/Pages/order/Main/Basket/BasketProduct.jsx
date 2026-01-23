@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
 import OrderContext from "../../../../../context/OrderContext.jsx";
+import { convertStringToBoolean } from "../../../../../utils/string.js";
 
 export default function BasketProduct({ basket }) {
   const {
@@ -42,6 +43,9 @@ export default function BasketProduct({ basket }) {
             onDelete={(e) => handleOnDelete(e, basketProduct.id)}
             onClick={() => handleClick(basketProduct.id)}
             isSelected={isProductSelected.id === basketProduct.id}
+            overlapImageSource={convertStringToBoolean(
+              basketProduct.isAvailable,
+            )}
           />
         </div>
       ))}
