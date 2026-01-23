@@ -8,6 +8,7 @@ import EmptyBasket from "./EmptyBasket.jsx";
 import OrderContext from "../../../../../context/OrderContext.jsx";
 import BasketProduct from "./BasketProduct.jsx";
 import Loader from "../MainRightSide/menu/Loader.jsx";
+import { convertStringToBoolean } from "../../../../../utils/string.js";
 
 export default function Basket() {
   const { basket, menu } = useContext(OrderContext);
@@ -19,6 +20,8 @@ export default function Basket() {
   const isBasketEmpty = basket.length === 0;
 
   const amoundTopay = basket.reduce((total, basketProduct) => {
+    if (convertStringToBoolean(basketProduct.isAvailable) === false)
+      return total;
     if (isNaN(basketProduct.price)) return total;
 
     return (total += basketProduct.price * basketProduct.quantity);

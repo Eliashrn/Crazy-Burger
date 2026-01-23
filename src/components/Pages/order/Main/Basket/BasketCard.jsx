@@ -11,16 +11,17 @@ export default function BasketCard({
   quantity,
   imageSource,
   className,
-  isModeAdmin,
+  $isModeAdmin,
   onDelete,
-  isSelected,
+  $isSelected,
   onClick,
+  overlapImageSource,
 }) {
   return (
     <BasketCardStyled
       className={className}
-      isModeAdmin={isModeAdmin}
-      isSelected={isSelected}
+      $isModeAdmin={$isModeAdmin}
+      $isSelected={$isSelected}
       onClick={onClick}
     >
       <div className="delete-button" onClick={onDelete}>
@@ -34,7 +35,9 @@ export default function BasketCard({
           <div className="title">
             <span>{title}</span>
           </div>
-          <span className="price">{formatPrice(price)}</span>
+          <span className="price">
+            {overlapImageSource ? formatPrice(price) : "Non disponible"}
+          </span>
         </div>
         <div className="quantity">
           <span>x {quantity}</span>
@@ -45,7 +48,7 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
+  cursor: ${({ $isModeAdmin }) => ($isModeAdmin ? "pointer" : "auto")};
   box-sizing: border-box;
   height: 86px;
   padding: 8px 16px;
@@ -160,8 +163,8 @@ const BasketCardStyled = styled.div`
       }
     }
   }
-  ${({ isModeAdmin, isSelected }) =>
-    isModeAdmin && isSelected && selectedCardStyles}
+  ${({ $isModeAdmin, $isSelected }) =>
+    $isModeAdmin && $isSelected && selectedCardStyles}
 `;
 
 const selectedCardStyles = css`

@@ -1,6 +1,12 @@
+import { FiPackage } from "react-icons/fi";
 import { LuEuro } from "react-icons/lu";
 import { MdPhotoCamera } from "react-icons/md";
 import { PiHamburgerFill } from "react-icons/pi";
+import {
+  isAvailableOption,
+  isPublicisedOption,
+} from "../../../../../../../enums/select";
+import { GoMegaphone } from "react-icons/go";
 
 export const getInputTextConfig = (newProduct) => [
   {
@@ -9,9 +15,9 @@ export const getInputTextConfig = (newProduct) => [
     value: newProduct.title ? newProduct.title : "",
     type: "text",
     placeholder: "Nom du produit (ex: Super Burger)",
-
     Icon: <PiHamburgerFill />,
     version: "extraStyleMinimalist",
+    className: "title",
   },
   {
     id: "1",
@@ -20,9 +26,9 @@ export const getInputTextConfig = (newProduct) => [
     type: "text",
     placeholder:
       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
-
     Icon: <MdPhotoCamera />,
     version: "extraStyleMinimalist",
+    className: "image-source",
   },
   {
     id: "2",
@@ -30,8 +36,27 @@ export const getInputTextConfig = (newProduct) => [
     value: newProduct.price ? newProduct.price : "",
     type: "text",
     placeholder: "Prix",
-
     Icon: <LuEuro />,
     version: "extraStyleMinimalist",
+    className: "price",
+  },
+];
+
+export const getSelectTextConfig = (newProduct) => [
+  {
+    id: "3",
+    name: "isAvailable",
+    value: newProduct.isAvailable,
+    className: "is-available",
+    Icon: <FiPackage />,
+    options: isAvailableOption,
+  },
+  {
+    id: "4",
+    name: "isPublicised",
+    value: newProduct.isPublicised,
+    className: "is-publicised",
+    Icon: <GoMegaphone />,
+    options: isPublicisedOption,
   },
 ];

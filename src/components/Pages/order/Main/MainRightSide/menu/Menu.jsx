@@ -6,11 +6,14 @@ import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
+import Loader from "./Loader.jsx";
+import Ribbon from "../../../../../Reusable-ui/Ribbon.jsx";
 import {
   EMPTY_PRODUCT,
   IMAGE_BY_DEFAULT,
+  IMAGE_NO_STOCK,
 } from "../../../../../../enums/product.jsx";
-import Loader from "./Loader.jsx";
+import { convertStringToBoolean } from "../../../../../../utils/string.js";
 
 export default function Menu() {
   useContext(OrderContext);
@@ -68,24 +71,41 @@ export default function Menu() {
     handleAddToBasket(productToAdd, username);
   };
 
+  let classNameCardContainer = isModeAdmin
+    ? "card-container is-hoverable"
+    : "card-container";
+
   return (
     <MenuStyled className="menu">
-      {menu.map(({ id, title, imageSource, price }) => {
-        return (
-          <Card
-            key={id}
-            title={title}
-            imageSource={imageSource === "" ? IMAGE_BY_DEFAULT : imageSource}
-            leftDescription={formatPrice(price)}
-            hasDelete={isModeAdmin}
-            onDelete={(e) => handleCardDelete(e, id)}
-            onClick={() => handleClick(id)}
-            isHoverable={isModeAdmin}
-            isSelected={checkIfProductIsClicked(id, isProductSelected.id)}
-            onAdd={(e) => handleAddButton(e, id)}
-          />
-        );
-      })}
+      {menu.map(
+        ({ id, title, imageSource, price, isAvailable, isPublicised }) => {
+          return (
+            <div className={classNameCardContainer} key={id}>
+              {convertStringToBoolean(isPublicised) && (
+                <Ribbon label="Nouveau" />
+              )}
+              <Card
+                key={id}
+                title={title}
+                imageSource={
+                  imageSource === "" ? IMAGE_BY_DEFAULT : imageSource
+                }
+                leftDescription={formatPrice(price)}
+                hasDelete={isModeAdmin}
+                onDelete={(e) => handleCardDelete(e, id)}
+                onClick={() => handleClick(id)}
+                $isHoverable={isModeAdmin}
+                $isSelected={checkIfProductIsClicked(id, isProductSelected.id)}
+                onAdd={(e) => handleAddButton(e, id)}
+                isOverlappingImageVisible={
+                  convertStringToBoolean(isAvailable) === false
+                }
+                overlapImageSource={IMAGE_NO_STOCK}
+              />
+            </div>
+          );
+        },
+      )}
     </MenuStyled>
   );
 }
@@ -99,4 +119,17 @@ const MenuStyled = styled.div`
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
+
+  .card-container {
+    position: relative;
+    height: 330px;
+    border-radius: ${theme.borderRadius.extraRound};
+
+    &.is-hoverable {
+      &:hover {
+        transform: scale(1.05);
+        transition: ease-out 0.4s;
+      }
+    }
+  }
 `;

@@ -8,8 +8,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenuProduct } from "../../../hooks/useMenuProduct";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router";
-import { getMenu } from "../../../api/product";
-import { getLocalStorage } from "../../../utils/window";
+import { initialiseUserSession } from "../helpers/initialiseUserSession.js";
 
 const OrderPage = () => {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -39,25 +38,9 @@ const OrderPage = () => {
 
   // comportements
 
-  const initialiseMenu = async () => {
-    const menuRecived = await getMenu(username);
-    setMenu(menuRecived);
-  };
-
-  const initialiseBasket = async () => {
-    const basketRecived = getLocalStorage(username);
-    if (basketRecived) {
-      setBasket(basketRecived);
-    }
-  };
-
   useEffect(() => {
-    initialiseMenu();
-  });
-
-  useEffect(() => {
-    initialiseBasket();
-  });
+    initialiseUserSession(username, setMenu, setBasket);
+  }, []);
 
   const orderContextValue = {
     newProduct,
@@ -97,17 +80,15 @@ const OrderPage = () => {
 };
 
 const OrderPageStyled = styled.div`
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   background: ${theme.colors.primary};
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 
   .container {
-    height: 933px;
+    background: red;
+    height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction: column;

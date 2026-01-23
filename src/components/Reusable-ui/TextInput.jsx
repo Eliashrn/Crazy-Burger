@@ -2,13 +2,13 @@ import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import React from "react";
 
-const Input = React.forwardRef(
+const TextInput = React.forwardRef(
   (
     { value, onChange, Icon, className, version = "normal", ...extraProps },
-    ref
+    ref,
   ) => {
     return (
-      <InputStyled className={className} version={version}>
+      <TextInputStyled className={className} version={version}>
         <div className="icon">{Icon && Icon}</div>
         <input
           ref={ref}
@@ -17,14 +17,14 @@ const Input = React.forwardRef(
           onChange={onChange}
           {...extraProps}
         />
-      </InputStyled>
+      </TextInputStyled>
     );
-  }
+  },
 );
 
-export default Input;
+export default TextInput;
 
-const InputStyled = styled.div`
+const TextInputStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@ const InputStyled = styled.div`
   .icon {
     font-size: ${theme.fonts.size.SM};
     margin: 0 13px 0 8px;
-    display: flex; // to center icon vertically
+    display: flex;
   }
 
   input {

@@ -1,12 +1,15 @@
 import styled from "styled-components";
-import Input from "../../../../../../Reusable-ui/Input";
-import { getInputTextConfig } from "./getInputTextConfig";
+import TextInput from "../../../../../../Reusable-ui/TextInput";
+import { getInputTextConfig, getSelectTextConfig } from "./getInputTextConfig";
 import React from "react";
 import ImagePreview from "./ImagePreview";
+import SelectInput from "../../../../../../Reusable-ui/SelectInput";
 
 const Form = React.forwardRef(
   ({ product, onSubmit, onChange, button, onFocus, onBlur }, ref) => {
     const inputTexts = getInputTextConfig(product);
+
+    const selectConfig = getSelectTextConfig(product);
 
     //Render
 
@@ -15,7 +18,8 @@ const Form = React.forwardRef(
         <ImagePreview imageSource={product.imageSource} title={product.title} />
         <div className="input-fields">
           {inputTexts.map((input) => (
-            <Input
+            <TextInput
+              className={input.className}
               key={input.id}
               {...input}
               onChange={onChange}
@@ -23,6 +27,20 @@ const Form = React.forwardRef(
               onBlur={onBlur}
               version="minimalist"
               ref={ref && input.name === "title" ? ref : null}
+            />
+          ))}
+          {selectConfig.map((select) => (
+            <SelectInput
+              className={select.className}
+              key={select.id}
+              options={select.options}
+              name={select.name}
+              id={select.id}
+              value={select.value}
+              onChange={onChange}
+              onBlur={onBlur}
+              onFocus={onFocus}
+              Icon={select.Icon}
             />
           ))}
         </div>
@@ -44,9 +62,23 @@ const FormStyled = styled.form`
   grid-row-gap: 8px;
 
   .input-fields {
-    grid-area: 1 / 2 / -2 / 3;
     display: grid;
+    grid-area: 1 / 2 / -2 / 3;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 8px;
+    grid-column-gap: 8px;
+
+    .title {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .image-source {
+      grid-area: 2 / 1 / 3 / 4;
+    }
+    .price {
+      grid-area: 3 / 1 / 4 / 2;
+    }
   }
 
   .submit {

@@ -10,16 +10,18 @@ export default function Card({
   hasDelete,
   onDelete,
   onClick,
-  isHoverable,
-  isSelected,
+  $isHoverable,
+  $isSelected,
   onAdd,
+  isOverlappingImageVisible,
+  overlapImageSource,
 }) {
   return (
     <CardStyled
       className="produit"
       onClick={onClick}
-      isHoverable={isHoverable}
-      isSelected={isSelected}
+      $isHoverable={$isHoverable}
+      $isSelected={$isSelected}
     >
       <div className="card">
         {hasDelete && (
@@ -32,8 +34,15 @@ export default function Card({
           </button>
         )}
         <div className="image">
+          {isOverlappingImageVisible && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img className="overlap-image" src={overlapImageSource} alt="" />
+            </div>
+          )}
           <img src={imageSource} alt={title} />
         </div>
+
         <div className="text-info">
           <div className="title">{title}</div>
           <div className="description">
@@ -41,6 +50,7 @@ export default function Card({
             <div className="right-description">
               <Button
                 className="primary-button"
+                disabled={isOverlappingImageVisible}
                 label={"Ajouter"}
                 onClick={onAdd}
               />
@@ -53,7 +63,7 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${({ isHoverable }) => isHoverable && hoverableStyle}
+  ${({ $isHoverable }) => $isHoverable && hoverableStyle}
 
   height: 330px;
 
@@ -109,6 +119,28 @@ const CardStyled = styled.div`
         height: 100%;
         object-fit: contain;
       }
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+        .transparent-layer {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 70%;
+          background: snow;
+          z-index: 1;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+      }
     }
 
     .text-info {
@@ -156,7 +188,6 @@ const CardStyled = styled.div`
 
           .primary-button {
             font-size: ${theme.fonts.size.XS};
-            cursor: pointer;
             padding: 12px;
             font-weight: ${theme.fonts.weights.bold};
             font-family: "Open Sans", sans-serif;
@@ -164,15 +195,13 @@ const CardStyled = styled.div`
         }
       }
     }
-    ${({ isHoverable, isSelected }) =>
-      isHoverable && isSelected && selectedStyle}
+    ${({ $isHoverable, $isSelected }) =>
+      $isHoverable && $isSelected && selectedStyle}
   }
 `;
 
 const hoverableStyle = css`
   &:hover {
-    transform: scale(1.05);
-    transition: ease-out 0.4s;
     box-shadow: ${theme.shadows.orangeHighlight};
     border-radius: ${theme.borderRadius.extraRound};
 
