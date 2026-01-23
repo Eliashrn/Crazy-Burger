@@ -36,8 +36,8 @@ export const useMenuProduct = () => {
   };
 
   const restMenu = (userName) => {
-    setMenu(fakeMenu.SMALL);
-    syncBothMenus(userName, fakeMenu.SMALL);
+    setMenu(fakeMenu.LARGE);
+    syncBothMenus(userName, fakeMenu.LARGE);
   };
 
   return {

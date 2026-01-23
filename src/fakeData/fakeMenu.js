@@ -72,7 +72,7 @@ const MEDIUM = [
 const LARGE = [
   {
     id: "1",
-    imageSource: "./image/burger-bacon-egg.png",
+    imageSource: "/image/burger-bacon-egg.png",
     title: "Burger Smoke BBQ",
     price: 5.598,
     quantity: 0,
@@ -81,7 +81,7 @@ const LARGE = [
   },
   {
     id: "2",
-    imageSource: "./image/burger-vegan.png",
+    imageSource: "/image/burger-vegan.png",
     title: "Vegan Burger",
     price: 5.4985,
     quantity: 0,
@@ -90,7 +90,7 @@ const LARGE = [
   },
   {
     id: "3",
-    imageSource: "./image/burger3.png",
+    imageSource: "/image/burger3.png",
     title: "Burger poulet",
     price: 5.367,
     quantity: 0,
@@ -99,7 +99,7 @@ const LARGE = [
   },
   {
     id: "4",
-    imageSource: "./image/drink1.png",
+    imageSource: "/image/drink1.png",
     title: "Coke 25cl",
     price: 3.568,
     quantity: 0,
@@ -108,7 +108,7 @@ const LARGE = [
   },
   {
     id: "5",
-    imageSource: "./image/drink2.png",
+    imageSource: "/image/drink2.png",
     title: "Pepsi 25cl",
     price: 3.487,
     quantity: 0,
@@ -117,7 +117,7 @@ const LARGE = [
   },
   {
     id: "6",
-    imageSource: "./image/drink3.png",
+    imageSource: "/image/drink3.png",
     title: "Iced Tea 25cl",
     price: 3.356,
     quantity: 0,
@@ -126,7 +126,7 @@ const LARGE = [
   },
   {
     id: "7",
-    imageSource: "./image/frites1.png",
+    imageSource: "/image/frites1.png",
     title: "Frites Paprika",
     price: 2.567,
     quantity: 0,
@@ -135,7 +135,7 @@ const LARGE = [
   },
   {
     id: "8",
-    imageSource: "./image/fries3.png",
+    imageSource: "/image/fries3.png",
     title: "New York Fries",
     price: 3.1678,
     quantity: 0,
@@ -144,7 +144,7 @@ const LARGE = [
   },
   {
     id: "9",
-    imageSource: "./image/wedges1.png",
+    imageSource: "/image/wedges1.png",
     title: "Crispy Potatoes",
     price: 3.7,
     quantity: 0,
@@ -153,7 +153,7 @@ const LARGE = [
   },
   {
     id: "10",
-    imageSource: "./image/ice-cream.png",
+    imageSource: "/image/ice-cream.png",
     title: "Glaces artisanales",
     price: 4.678,
     quantity: 0,

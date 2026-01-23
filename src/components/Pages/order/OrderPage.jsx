@@ -8,11 +8,10 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenuProduct } from "../../../hooks/useMenuProduct";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router";
-import { getMenu } from "../../../api/product";
-import { getLocalStorage } from "../../../utils/window";
+import { initialiseUserSession } from "../helpers/initialiseUserSession.js";
 
 const OrderPage = () => {
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
@@ -39,24 +38,8 @@ const OrderPage = () => {
 
   // comportements
 
-  const initialiseMenu = async () => {
-    const menuRecived = await getMenu(username);
-    setMenu(menuRecived);
-  };
-
-  const initialiseBasket = async () => {
-    const basketRecived = getLocalStorage(username);
-    if (basketRecived) {
-      setBasket(basketRecived);
-    }
-  };
-
   useEffect(() => {
-    initialiseMenu(username);
-  }, []);
-
-  useEffect(() => {
-    initialiseBasket();
+    initialiseUserSession(username, setMenu, setBasket);
   }, []);
 
   const orderContextValue = {
