@@ -12,7 +12,7 @@ export const useMenuProduct = () => {
     const menuUpdated = [newProduct, ...menuCopy];
     //3. Mettre à jour le state avec la copie modifiée
     setMenu(menuUpdated);
-    syncMenu(userName, menuUpdated);
+    syncMenu(userName, menuUpdated ?? []);
   };
 
   const handleDelete = (idDelete, userName) => {
@@ -20,7 +20,7 @@ export const useMenuProduct = () => {
 
     const menuUpdated = menuCpy.filter((product) => product.id !== idDelete);
     setMenu(menuUpdated);
-    syncMenu(userName, menuUpdated);
+    syncMenu(userName, menuUpdated ?? []);
   };
 
   const handleEdith = (productBeingEdited, userName) => {
@@ -32,12 +32,12 @@ export const useMenuProduct = () => {
     menuCopy[indexOfProduct] = productBeingEdited;
 
     setMenu(menuCopy);
-    syncMenu(userName, menuCopy);
+    syncMenu(userName, menuCopy ?? []);
   };
 
   const restMenu = (userName) => {
     setMenu(fakeMenu.LARGE);
-    syncMenu(userName, fakeMenu.LARGE);
+    syncMenu(userName, fakeMenu.LARGE ?? []);
   };
 
   return {
