@@ -38,3 +38,14 @@ export const getMenu = async (userId) => {
     throw error;
   }
 };
+
+export const getMenu = async (idUser) => {
+  //const docRef = doc(CHEMIN)
+  const docRef = doc(db, "users", idUser);
+
+  const docSnapshot = await getDoc(docRef);
+  if (docSnapshot.exists()) {
+    const { menu } = docSnapshot.data();
+    return menu;
+  }
+};
