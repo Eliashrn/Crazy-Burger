@@ -29,7 +29,6 @@ export default function Menu() {
     titleEdithBox,
     handleAddToBasket,
     handleDeleteFromBasket,
-    username,
   } = useContext(OrderContext);
 
   const handleClick = async (idProductSelected) => {
@@ -54,13 +53,13 @@ export default function Menu() {
     if (!isModeAdmin) {
       return <EmptyMenuClient />;
     }
-    return <EmptyMenuAdmin restMenu={() => restMenu(username)} />;
+    return <EmptyMenuAdmin restMenu={() => restMenu()} />;
   }
 
   const handleCardDelete = (e, idPrductToDelete) => {
     e.stopPropagation();
-    handleDelete(idPrductToDelete, username);
-    handleDeleteFromBasket(idPrductToDelete, username);
+    handleDelete(idPrductToDelete);
+    handleDeleteFromBasket(idPrductToDelete);
     idPrductToDelete === isProductSelected.idPrductToDelete &&
       setIsProductSelected(EMPTY_PRODUCT);
   };
@@ -68,7 +67,7 @@ export default function Menu() {
   const handleAddButton = (e, id) => {
     e.stopPropagation();
     const productToAdd = menu.find((product) => product.id === id);
-    handleAddToBasket(productToAdd, username);
+    handleAddToBasket(productToAdd);
   };
 
   let classNameCardContainer = isModeAdmin

@@ -5,7 +5,6 @@ import { IoChevronForwardSharp } from "react-icons/io5";
 import Button from "../../Reusable-ui/Button";
 import { useNavigate } from "react-router";
 import { theme } from "../../../theme";
-import { isExistingUser } from "../../../api/user";
 import Welcome from "./Welcome";
 import TextInput from "../../Reusable-ui/TextInput";
 export function LoginForm() {
@@ -14,9 +13,8 @@ export function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userRecived = await isExistingUser(userName);
     setUserName("");
-    navigate(`/order/${userRecived.username}`);
+    navigate(`/order/${userName}`);
   };
 
   return (
