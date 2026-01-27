@@ -1,29 +1,27 @@
 import { useState } from "react";
 import { fakeMenu } from "../fakeData/fakeMenu";
-import { syncBothMenus } from "../api/product";
+import { EMPTY_PRODUCT } from "../enums/product";
 
 export const useMenuProduct = () => {
-  const [menu, setMenu] = useState();
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
 
-  const handleAddProduct = (newProduct, userName) => {
+  const handleAddProduct = (newProduct) => {
     //1. Copie du tableau menu
     const menuCopy = JSON.parse(JSON.stringify(menu));
     //2. Manipuler la copie du tableau
     const menuUpdated = [newProduct, ...menuCopy];
     //3. Mettre à jour le state avec la copie modifiée
     setMenu(menuUpdated);
-    syncBothMenus(userName, menuUpdated);
   };
 
-  const handleDelete = (idDelete, userName) => {
+  const handleDelete = (idDelete) => {
     const menuCpy = JSON.parse(JSON.stringify(menu));
 
     const menuUpdated = menuCpy.filter((product) => product.id !== idDelete);
     setMenu(menuUpdated);
-    syncBothMenus(userName, menuUpdated);
   };
 
-  const handleEdith = (productBeingEdited, userName) => {
+  const handleEdith = (productBeingEdited) => {
     const menuCopy = JSON.parse(JSON.stringify(menu));
 
     const indexOfProduct = menu.findIndex(
@@ -32,12 +30,10 @@ export const useMenuProduct = () => {
     menuCopy[indexOfProduct] = productBeingEdited;
 
     setMenu(menuCopy);
-    syncBothMenus(userName, menuCopy);
   };
 
-  const restMenu = (userName) => {
+  const restMenu = () => {
     setMenu(fakeMenu.LARGE);
-    syncBothMenus(userName, fakeMenu.LARGE);
   };
 
   return {
